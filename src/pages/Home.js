@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Poster from "../assets/img/img-header.png";
@@ -8,12 +8,30 @@ import BtnMonth from "../components/filter/BtnMonth";
 import { default as CardMovieNowShowing } from "../components/now-showing/CardMovie";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 const Home = () => {
+  const [nowShowing, setNowShowing] = useState({});
+  const [upComing, setUpComing] = useState({});
+
+  const getNowShowing = async () => {
+    const { data } = await axios.get("http://localhost:8888/movies/now");
+    setNowShowing(data);
+  };
+
+  const getUpComing = async () => {
+    const { data } = await axios.get("http://localhost:8888/movies/upcoming");
+    setUpComing(data);
+  };
+
+  useEffect(() => {
+    getNowShowing();
+    getUpComing();
+  }, []);
+
   return (
     <div>
       <Navbar />
-
       <header className="flex items-center px-24 mt-10 pb-20">
         <section className="font-Mulish flex-1">
           <p className="text-xl text-[#A0A3BD] mb-5">
@@ -39,13 +57,7 @@ const Home = () => {
             </div>
           </div>
           <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar">
-            <CardMovieNowShowing />
-            <CardMovieNowShowing />
-            <CardMovieNowShowing />
-            <CardMovieNowShowing />
-            <CardMovieNowShowing />
-            <CardMovieNowShowing />
-            <CardMovieNowShowing />
+            <CardMovieNowShowing data={nowShowing} />
           </div>
         </section>
         <section className="py-32 bg-white">
@@ -72,14 +84,7 @@ const Home = () => {
             <BtnMonth month={"August"} />
           </div>
           <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar">
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
+            <CardMovie data={upComing} />
           </div>
         </section>
         <section className="px-24 font-Mulish pb-20">
