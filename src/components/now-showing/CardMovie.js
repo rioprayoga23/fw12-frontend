@@ -5,7 +5,7 @@ import Spidermen from "../../assets/img/spidermen.png";
 
 const CardMovie = (props) => {
   return (
-    <div className="group flex-shrink-0 h-fit p-6 border-2 border-white rounded-lg hover:bg-white hover:border-secondary hover:shadow-md">
+    <div className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-white rounded-lg hover:bg-white hover:border-secondary hover:shadow-md">
       <img src={Spidermen} alt="" className="w-imgMovie h-imgMovie" />
       <div className="hidden group-hover:block">
         <div className="w-imgMovie text-center">

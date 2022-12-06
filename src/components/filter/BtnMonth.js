@@ -2,11 +2,11 @@ const BtnMonth = (props) => {
   return (
     <div>
       {props.status === "active" ? (
-        <div className="bg-primary border-2 border-primary py-2 w-32 text-center rounded-md text-white font-Mulish shadow-md cursor-pointer">
+        <div className="bg-primary border-2 border-primary py-2 w-32 text-center rounded-md text-white font-Mulish shadow-md cursor-pointer mr-3">
           {props.month}
         </div>
       ) : (
-        <div className="py-2 w-32 text-center rounded-md text-primary border-2 border-primary font-Mulish shadow-md cursor-pointer">
+        <div className="py-2 w-32 text-center rounded-md text-primary border-2 border-primary font-Mulish shadow-md cursor-pointer mr-3">
           {props.month}
         </div>
       )}

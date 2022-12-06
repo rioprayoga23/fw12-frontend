@@ -5,7 +5,7 @@ import Spidermen from "../assets/img/spidermen.png";
 
 const CardMovie = () => {
   return (
-    <div className="group flex-shrink-0 h-fit p-6 border-2 border-secondary rounded-lg">
+    <div className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg">
       <img src={Spidermen} alt="" className="w-imgMovie h-imgMovie" />
       <div className="">
         <div className="w-imgMovie text-center">

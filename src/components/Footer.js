@@ -40,19 +40,19 @@ const Footer = () => {
           <h3 className="text-black font-bold">Follow Us</h3>
           <li className="list-none">
             <div className="flex flex-col gap-5 text-[#6E7191]">
-              <a href="#" className="flex mt-5">
+              <a href="https://id-id.facebook.com/" className="flex mt-5">
                 <Facebook />
                 <span className="ml-4">Tickitz Cinema id</span>
               </a>
-              <a href="#" className="flex">
+              <a href="https://www.instagram.com/?hl=id" className="flex">
                 <Instagram />
                 <span className="ml-4">tickitz.id</span>
               </a>
-              <a href="#" className="flex">
+              <a href="https://twitter.com/login" className="flex">
                 <Twitter />
                 <span className="ml-4">tickitz.id</span>
               </a>
-              <a href="#" className="flex">
+              <a href="https://youtube.com/" className="flex">
                 <Youtube />
                 <span className="ml-4">Tickitz Cinema id</span>
               </a>

@@ -38,7 +38,7 @@ const Home = () => {
               <Link to="/viewAll">View All</Link>
             </div>
           </div>
-          <div className="ml-24 mt-10 flex gap-5 overflow-x-auto no-scrollbar">
+          <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar">
             <CardMovieNowShowing />
             <CardMovieNowShowing />
             <CardMovieNowShowing />
@@ -57,7 +57,7 @@ const Home = () => {
               <Link to="/viewAll">View All</Link>
             </div>
           </div>
-          <div className="ml-24 flex mt-5 gap-4 overflow-x-auto no-scrollbar">
+          <div className="ml-24 flex mt-5 overflow-x-auto no-scrollbar">
             <BtnMonth status={"active"} month={"September"} />
             <BtnMonth month={"October"} />
             <BtnMonth month={"November"} />
@@ -71,7 +71,7 @@ const Home = () => {
             <BtnMonth month={"July"} />
             <BtnMonth month={"August"} />
           </div>
-          <div className="ml-24 mt-10 gap-5 flex overflow-x-auto no-scrollbar">
+          <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar">
             <CardMovie />
             <CardMovie />
             <CardMovie />
