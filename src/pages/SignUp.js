@@ -17,7 +17,7 @@ const SignUp = () => {
 
   return (
     <div className="flex">
-      <div className="bg-hero bg-cover w-3/4">
+      <div className="bg-hero bg-cover w-3/4 lg:hidden">
         <div className="bg-colorAuth/80 flex flex-col justify-center items-center min-h-screen">
           <img src={brand} alt="" />
           <div className="font-Inter text-4xl text-white">
@@ -25,15 +25,17 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center w-2/4 max-h-screen overflow-y-scroll">
-        <div className="w-full px-14 pb-20">
+      <div className="flex flex-col justify-center w-2/4 max-h-screen overflow-y-scroll lg:w-full">
+        <div className="w-full px-14 pb-20 md:px-7 lg:px-32">
           <div className="font-Inter">
-            <h1 className="text-5xl font-semibold mb-4 pt-96">Sign Up</h1>
+            <h1 className="text-5xl font-semibold mb-4 pt-96 md:pt-96 lg:pt-60 xl:pt-10">
+              Sign Up
+            </h1>
             <p className="text-[#AAAAAA] text-md mb-9">Fill your additional</p>
           </div>
           <form onSubmit={handlerSignUp}>
             <div className="flex flex-col">
-              <FormLabel for={"First Name"} />
+              <FormLabel for={"firstName"} name="First Name" />
               <FormInput
                 id={"firstName"}
                 type={"text"}
@@ -41,7 +43,7 @@ const SignUp = () => {
                 placeholder={"Write your first name"}
               />
 
-              <FormLabel for={"Last Name"} />
+              <FormLabel for={"lastName"} name="Last Name" />
               <FormInput
                 id={"lastName"}
                 type={"text"}
@@ -49,7 +51,7 @@ const SignUp = () => {
                 placeholder={"Write your last name"}
               />
 
-              <FormLabel for={"Phone Number"} />
+              <FormLabel for={"phoneNumber"} name="Phone Number" />
               <FormInput
                 id={"phoneNumber"}
                 type={"text"}
@@ -57,7 +59,7 @@ const SignUp = () => {
                 placeholder={"Write your phone number"}
               />
 
-              <FormLabel for={"Email"} />
+              <FormLabel for={"email"} name="Email" />
               <FormInput
                 id={"email"}
                 type={"email"}
@@ -65,7 +67,7 @@ const SignUp = () => {
                 placeholder={"Write your email"}
               />
 
-              <FormLabel for={"Password"} />
+              <FormLabel for={"Password"} name="Password" />
               <FormInputPassword
                 id={"password"}
                 type={"password"}

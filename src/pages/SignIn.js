@@ -16,7 +16,7 @@ const SignIn = () => {
 
   return (
     <div className="flex">
-      <div className="bg-hero bg-cover w-3/4">
+      <div className="bg-hero bg-cover w-3/4 lg:hidden">
         <div className="bg-colorAuth/80 flex flex-col justify-center items-center min-h-screen">
           <img src={brand} alt="" />
           <div className="font-Inter text-4xl text-white">
@@ -24,8 +24,8 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center w-2/4">
-        <div className="w-full px-14">
+      <div className="flex flex-col justify-center w-2/4 lg:w-full">
+        <div className="w-full px-24 md:px-7 lg:px-32 lg:my-16 xl:px-10">
           <div className="font-Inter">
             <h1 className="text-5xl font-semibold mb-4">Sign In</h1>
             <p className="text-[#AAAAAA] text-md mb-9">
@@ -34,7 +34,7 @@ const SignIn = () => {
           </div>
           <form onSubmit={handlerLogin}>
             <div className="flex flex-col">
-              <FormLabel for={"Email"} />
+              <FormLabel for={"email"} name="Email" />
               <FormInput
                 id={"email"}
                 type={"email"}
@@ -42,7 +42,7 @@ const SignIn = () => {
                 placeholder={"Write your email"}
               />
 
-              <FormLabel for={"Password"} />
+              <FormLabel for={"password"} name="Password" />
               <FormInputPassword
                 id={"password"}
                 type={"password"}

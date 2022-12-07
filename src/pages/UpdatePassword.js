@@ -15,7 +15,7 @@ const UpdatePassword = () => {
 
   return (
     <div className="flex">
-      <div className="bg-hero bg-cover w-3/4">
+      <div className="bg-hero bg-cover w-3/4 lg:hidden">
         <div className="bg-colorAuth/80 flex flex-col justify-center min-h-screen">
           <div className="px-24">
             <img src={brand} alt="" className="w-60 pb-12" />
@@ -66,8 +66,8 @@ const UpdatePassword = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center w-2/4">
-        <div className="w-full px-14">
+      <div className="flex flex-col justify-center w-2/4 lg:w-full">
+        <div className="w-full px-14 md:px-7 md:mt-20 lg:px-32 lg:my-16">
           <div className="font-Inter">
             <h1 className="text-2xl font-semibold mb-4">
               Fill your complete email

@@ -25,7 +25,7 @@ const CardMovie = (props) => {
                   {movie.genre}
                 </p>
               </div>
-              <Link to="/movie-details">
+              <Link to="/movieDetails">
                 <div className="w-full border-2 border-primary rounded-md text-center py-1 mt-5 font-Mulish text-primary text-sm cursor-pointer">
                   Details
                 </div>

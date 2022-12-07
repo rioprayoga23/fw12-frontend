@@ -6,6 +6,15 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
+import VIewAll from "./pages/VIewAll";
+import MovieDetails from "./pages/MovieDetails";
+import OrderPage from "./pages/OrderPage";
+import Payment from "./pages/Payment";
+import Profile from "./pages/Profile";
+import OrderHistory from "./pages/OrderHistory";
+import TicketResult from "./pages/TicketResult";
+import TicketResultUsed from "./pages/TicketResultUsed";
+import TicketResultExpired from "./pages/TicketResultExpired";
 
 function App() {
   return (
@@ -15,7 +24,16 @@ function App() {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/updatePassword" element={<UpdatePassword/>} />
+        <Route path="/updatePassword" element={<UpdatePassword />} />
+        <Route path="/viewAll" element={<VIewAll />} />
+        <Route path="/movieDetails" element={<MovieDetails />} />
+        <Route path="/order" element={<OrderPage />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/orderHistory" element={<OrderHistory />} />
+        <Route path="/ticketResult" element={<TicketResult />} />
+        <Route path="/ticketResultUsed" element={<TicketResultUsed />} />
+        <Route path="/ticketResultExpired" element={<TicketResultExpired/>} />
       </Routes>
     </BrowserRouter>
   );
