@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Navbar from "../components/Navbar";
 import brandSmall from "../assets/img/brand-white.png";
+import Footer from "../components/Footer";
 
 const TicketResultUsed = () => {
   return (
@@ -68,6 +69,7 @@ const TicketResultUsed = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </Fragment>
   );
 };
