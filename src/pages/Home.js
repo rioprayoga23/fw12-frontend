@@ -15,12 +15,16 @@ const Home = () => {
   const [upComing, setUpComing] = useState({});
 
   const getNowShowing = async () => {
-    const { data } = await axios.get("http://localhost:8888/movies/now");
+    const { data } = await axios.get(
+      "http://localhost:8888/movies/now?limit=7"
+    );
     setNowShowing(data);
   };
 
   const getUpComing = async () => {
-    const { data } = await axios.get("http://localhost:8888/movies/upcoming");
+    const { data } = await axios.get(
+      "http://localhost:8888/movies/upcoming?limit=7"
+    );
     setUpComing(data);
   };
 
