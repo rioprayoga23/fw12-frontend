@@ -1,5 +1,5 @@
 import React from "react";
-import Brand from "../assets/img/brand.png";
+import brand from "../assets/img/brand.png";
 import { Link, useNavigate } from "react-router-dom";
 
 import FormInput from "../components/form/FormInput";
@@ -18,7 +18,7 @@ const SignIn = () => {
     <div className="flex">
       <div className="bg-hero bg-cover w-3/4">
         <div className="bg-colorAuth/80 flex flex-col justify-center items-center min-h-screen">
-          <img src={Brand} alt="" />
+          <img src={brand} alt="" />
           <div className="font-Inter text-4xl text-white">
             wait, watch, wow!
           </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import Poster from "../assets/img/img-header.png";
+import poster from "../assets/img/img-header.png";
 
 import CardMovie from "../components/CardMovie";
 import BtnMonth from "../components/filter/BtnMonth";
@@ -45,7 +45,7 @@ const Home = () => {
         </section>
         <section className="flex-1 flex justify-center">
           <div>
-            <img src={Poster} alt="" />
+            <img src={poster} alt="" />
           </div>
         </section>
       </header>

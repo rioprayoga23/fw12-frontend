@@ -1,5 +1,5 @@
 import React from "react";
-import Brand from "../assets/img/brand.png";
+import brand from "../assets/img/brand.png";
 import { useNavigate } from "react-router-dom";
 
 import FormInputPassword from "../components/form/FormInputPassword";
@@ -18,7 +18,7 @@ const UpdatePassword = () => {
       <div className="bg-hero bg-cover w-3/4">
         <div className="bg-colorAuth/80 flex flex-col justify-center min-h-screen">
           <div className="px-24">
-            <img src={Brand} alt="" className="w-60 pb-12" />
+            <img src={brand} alt="" className="w-60 pb-12" />
             <div className="font-Inter text-5xl text-white pb-5">
               Lets reset your password
             </div>
