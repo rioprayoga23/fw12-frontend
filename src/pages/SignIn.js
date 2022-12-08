@@ -55,10 +55,7 @@ const SignIn = () => {
               <p>
                 Forgot your password?
                 <span>
-                  <Link
-                    to="/forgotPassword"
-                    className="text-[#5F2EEA] underline"
-                  >
+                  <Link to="/forgotPassword" className="text-primary underline">
                     Reset Now
                   </Link>
                 </span>
@@ -66,7 +63,7 @@ const SignIn = () => {
               <p>
                 Don't have an account?
                 <span>
-                  <Link to="/signUp" className="text-[#5F2EEA] underline">
+                  <Link to="/signUp" className="text-primary underline">
                     Sign Up
                   </Link>
                 </span>

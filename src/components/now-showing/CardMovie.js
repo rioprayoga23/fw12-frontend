@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+
+import ButtonSmallPrimary from "../ButtonSmallPrimary";
 
 const CardMovie = (props) => {
   const { data } = props;
@@ -8,7 +9,7 @@ const CardMovie = (props) => {
       {data?.results?.map((movie) => {
         return (
           <div
-            className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-white rounded-lg hover:bg-white hover:border-secondary hover:shadow-md"
+            className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-white rounded-lg hover:bg-white hover:border-primary cursor-pointer"
             key={String(movie.id)}
           >
             <img
@@ -25,11 +26,7 @@ const CardMovie = (props) => {
                   {movie.genre}
                 </p>
               </div>
-              <Link to="/movieDetails">
-                <div className="w-full border-2 border-primary rounded-md text-center py-1 mt-5 font-Mulish text-primary text-sm cursor-pointer">
-                  Details
-                </div>
-              </Link>
+              <ButtonSmallPrimary name={"Details"} link="/movieDetails" />
             </div>
           </div>
         );

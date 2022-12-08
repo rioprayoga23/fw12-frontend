@@ -6,6 +6,8 @@ import { ChevronDown } from "react-feather";
 import BtnMonth from "../components/filter/BtnMonth";
 import CardMovie from "../components/CardMovie";
 import axios from "axios";
+import ButtonSmallPrimary from "../components/ButtonSmallPrimary";
+import Pagination from "../components/now-showing/Pagination";
 
 const VIewAll = () => {
   const [allMovies, setAllMovies] = useState({});
@@ -24,15 +26,16 @@ const VIewAll = () => {
       <Navbar login={true} />
 
       <div className="bg-secondary pb-10">
-        <div className="flex items-center px-24 pt-10 pb-7">
-          <div className="flex-1 font-Mulish font-bold text-xl">
+        <div className="flex items-center px-24 pt-10 pb-7 md:px-5 lg:px-10 md:flex-col md:items-start">
+          <div className="flex-1 font-Mulish font-bold text-xl md:mb-3">
             <h3>List Movie</h3>
           </div>
-          <div className="flex items-center gap-5 font-Mulish">
-            <div className="dropdown dropdown-bottom dropdown-end">
+
+          <div className="flex items-center gap-5 font-Mulish md:flex-col md:gap-3 md:w-full">
+            <div className="dropdown dropdown-bottom dropdown-end md:w-full">
               <div
                 tabIndex={0}
-                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center"
+                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center md:m-0 md:w-full"
               >
                 <span className="flex-1">Sort</span>
                 <div>
@@ -51,16 +54,16 @@ const VIewAll = () => {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="md:w-full">
               <input
                 type="text"
-                className="border-2 border-[#DEDEDE] p-2 w-72 rounded-xl"
+                className="border-2 border-[#DEDEDE] p-2 w-72 rounded-xl md:w-full"
                 placeholder="Search Movie Name ..."
               />
             </div>
           </div>
         </div>
-        <div className="flex ml-24 overflow-x-auto no-scrollbar">
+        <div className="flex ml-24 overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
           <BtnMonth status={"active"} month={"September"} />
           <BtnMonth month={"October"} />
           <BtnMonth month={"November"} />
@@ -75,21 +78,14 @@ const VIewAll = () => {
           <BtnMonth month={"August"} />
         </div>
 
-        <div className="mx-24 mt-10 gap-5 py-10 flex flex-wrap bg-white justify-center">
-          <CardMovie data={allMovies} />
+        <div className="mx-24 mt-10 gap-5 py-10 flex flex-wrap bg-white justify-center md:mx-0 md:justify-center md:gap-3 lg:mx-10">
+          <CardMovie
+            data={allMovies}
+            btn={[<ButtonSmallPrimary name="Details" link="/movieDetails" />]}
+          />
         </div>
-        <div className="px-24 mt-10 flex justify-center">
-          <div className="flex gap-2">
-            <button className="py-2 px-4 bg-primary rounded-md text-white">
-              1
-            </button>
-            <button className="py-2 px-4 bg-white rounded-md">2</button>
-            <button className="py-2 px-4 bg-white rounded-md">3</button>
-            <button className="py-2 px-4 bg-white rounded-md">4</button>
-          </div>
-        </div>
+        <Pagination />
       </div>
-
       <Footer />
     </Fragment>
   );

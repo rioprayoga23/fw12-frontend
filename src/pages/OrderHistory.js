@@ -10,8 +10,8 @@ const OrderHistory = () => {
   return (
     <Fragment>
       <Navbar login={true} />
-      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish">
-        <div className="w-1/4">
+      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col">
+        <div className="w-1/4 md:w-full">
           <div className="bg-white rounded-md mt-10">
             <div className="p-8">
               <h5>INFO</h5>
@@ -35,10 +35,10 @@ const OrderHistory = () => {
             </div>
           </div>
         </div>
-        <div className="w-3/4">
+        <div className="w-3/4 md:w-full">
           <div className="mt-10 mb-9">
-            <div className="bg-white p-7 items-center rounded-md">
-              <Link to="/profile" className="font-semibold mr-10">
+            <div className="bg-white p-7 items-center rounded-md md:flex md:flex-col md:gap-3">
+              <Link to="/profile" className="font-semibold mr-10 md:mr-0">
                 Account Settings
               </Link>
               <Link to="/orderHistory" className=" text-primary font-semibold">
@@ -48,8 +48,8 @@ const OrderHistory = () => {
           </div>
 
           <div className="bg-white rounded-md p-7 mb-7">
-            <div className="flex">
-              <div className="flex-1 mb-5">
+            <div className="flex md:flex-col-reverse md:items-center md:gap-5">
+              <div className="flex-1 mb-5 md:text-center">
                 <h5 className="text-[#AAAAAA] text-sm mb-2">
                   Tuesday, 07 July 2020 - 04:30pm
                 </h5>
@@ -62,8 +62,8 @@ const OrderHistory = () => {
               </div>
             </div>
             <div className="border border-b mb-5"></div>
-            <div className="flex justify-between items-center">
-              <div className="w-48 bg-[#00BA88] text-center p-2 rounded-md text-white">
+            <div className="flex justify-between items-center md:flex-col md:gap-4">
+              <div className="w-48 bg-[#00BA88] text-center p-2 rounded-md text-white md:w-full">
                 Ticket in active
               </div>
               <Link to="/ticketResult" className="text-[#AAAAAA]">
@@ -73,8 +73,8 @@ const OrderHistory = () => {
           </div>
 
           <div className="bg-white rounded-md p-7 mb-7">
-            <div className="flex">
-              <div className="flex-1 mb-5">
+            <div className="flex md:flex-col-reverse md:items-center md:gap-5">
+              <div className="flex-1 mb-5 md:text-center">
                 <h5 className="text-[#AAAAAA] text-sm mb-2">
                   Monday, 14 June 2020 - 02:00pm
                 </h5>
@@ -85,9 +85,9 @@ const OrderHistory = () => {
               </div>
             </div>
             <div className="border border-b mb-5"></div>
-            <div className="flex justify-between items-center">
-              <div className="w-48 bg-[#6E7191] text-center p-2 rounded-md text-white">
-                Ticket used
+            <div className="flex justify-between items-center md:flex-col md:gap-4">
+              <div className="w-48 bg-[#6E7191] text-center p-2 rounded-md text-white md:w-full">
+                Ticket Used
               </div>
               <Link to="/ticketResultUsed" className="text-[#AAAAAA]">
                 See Details
@@ -96,8 +96,8 @@ const OrderHistory = () => {
           </div>
 
           <div className="bg-white rounded-md p-7 mb-7">
-            <div className="flex">
-              <div className="flex-1 mb-5">
+            <div className="flex md:flex-col-reverse md:items-center md:gap-5">
+              <div className="flex-1 mb-5 md:text-center">
                 <h5 className="text-[#AAAAAA] text-sm mb-2">
                   Monday, 10 March 2020 - 04:00pm
                 </h5>
@@ -108,9 +108,9 @@ const OrderHistory = () => {
               </div>
             </div>
             <div className="border border-b mb-5"></div>
-            <div className="flex justify-between items-center">
-              <div className="w-48 bg-red-500 text-center p-2 rounded-md text-white">
-                Ticket expired
+            <div className="flex justify-between items-center md:flex-col md:gap-4">
+              <div className="w-48 bg-red-500 text-center p-2 rounded-md text-white md:w-full">
+                Ticket Expired
               </div>
               <Link to="/ticketResultExpired" className="text-[#AAAAAA]">
                 See Details

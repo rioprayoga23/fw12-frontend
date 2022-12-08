@@ -13,8 +13,8 @@ const Profile = () => {
     <Fragment>
       <Navbar login={true} />
 
-      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish">
-        <div className="w-1/4">
+      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 lg:px-10 md:flex-col">
+        <div className="w-1/4 md:w-full lg:w-1/3">
           <div className="bg-white rounded-md mt-10">
             <div className="p-8">
               <h5>INFO</h5>
@@ -38,10 +38,13 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="w-3/4">
+        <div className="w-3/4 md:w-full lg:w-2/3">
           <div className="mt-10">
-            <div className="bg-white p-7 items-center rounded-md">
-              <Link to="/profile" className="text-primary font-semibold mr-10">
+            <div className="bg-white p-7 items-center rounded-md md:flex md:flex-col md:gap-3">
+              <Link
+                to="/profile"
+                className="text-primary font-semibold mr-10 md:mr-0"
+              >
                 Account Settings
               </Link>
               <Link to="/orderHistory" className="text-[#AAAAAA] font-semibold">
@@ -49,12 +52,12 @@ const Profile = () => {
               </Link>
             </div>
           </div>
-          <div className="mt-9">
-            <div className="bg-white rounded-md p-7">
+          <div className="mt-9 lg:w-full">
+            <div className="bg-white rounded-md p-7 md:w-full">
               <h3 className="font-semibold">Details Information</h3>
               <div className="border border-b my-5"></div>
-              <div className="flex gap-4">
-                <div className="flex flex-col flex-1">
+              <div className="flex gap-4 md:flex-col lg:w-full lg:flex-col">
+                <div className="flex flex-col flex-1 lg:w-full">
                   <FormLabel for="firstName" name="First Name" />
                   <FormInput
                     id={"firstName"}
@@ -63,7 +66,7 @@ const Profile = () => {
                     placeholder={"Write your email"}
                   />
                 </div>
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 lg:w-full">
                   <FormLabel for="lastName" name="Last Name" />
                   <FormInput
                     id={"lastName"}
@@ -73,7 +76,7 @@ const Profile = () => {
                   />
                 </div>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-4 md:flex-col lg:flex-col">
                 <div className="flex flex-col flex-1">
                   <FormLabel for="email" name="Email" />
                   <FormInput
@@ -84,7 +87,7 @@ const Profile = () => {
                   />
                 </div>
 
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 ">
                   <FormLabel for="phoneNumber" name="Phone Number" />
                   <div className="flex border-2 p-4 rounded-2xl w-full">
                     <input
@@ -102,16 +105,16 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <button className="w-80 p-4 rounded-lg bg-primary mt-5 text-white">
+            <button className="w-80 p-4 rounded-lg bg-primary mt-5 text-white md:w-full">
               Update changes
             </button>
           </div>
-          <div className="mt-9">
+          <div className="mt-9 md:w-full">
             <div className="bg-white rounded-md p-7">
               <h3 className="font-semibold">Account and Privacy</h3>
               <div className="border border-b my-5"></div>
-              <div className="flex gap-4">
-                <div className="flex flex-col flex-1">
+              <div className="flex gap-4 md:flex-col lg:flex-col">
+                <div className="flex flex-col flex-1 ">
                   <FormLabel for="firstName" name="New Password" />
                   <FormInputPassword
                     id={"password"}
@@ -131,7 +134,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <button className="w-80 p-4 rounded-lg bg-primary mt-5 text-white">
+            <button className="w-80 p-4 rounded-lg bg-primary mt-5 text-white md:w-full">
               Update changes
             </button>
           </div>

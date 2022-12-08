@@ -80,7 +80,7 @@ const SignUp = () => {
               <p className="text-[#8692A6]">
                 Already have account?
                 <span>
-                  <Link to="/signIn" className="text-[#5F2EEA] underline">
+                  <Link to="/signIn" className="text-primary underline">
                     Sign In
                   </Link>
                 </span>

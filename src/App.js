@@ -15,6 +15,9 @@ import OrderHistory from "./pages/OrderHistory";
 import TicketResult from "./pages/TicketResult";
 import TicketResultUsed from "./pages/TicketResultUsed";
 import TicketResultExpired from "./pages/TicketResultExpired";
+import ManageMovie from "./pages/ManageMovie";
+import Dashboard from "./pages/Dashboard";
+import ManageSchedule from "./pages/ManageSchedule";
 
 function App() {
   return (
@@ -33,7 +36,11 @@ function App() {
         <Route path="/orderHistory" element={<OrderHistory />} />
         <Route path="/ticketResult" element={<TicketResult />} />
         <Route path="/ticketResultUsed" element={<TicketResultUsed />} />
-        <Route path="/ticketResultExpired" element={<TicketResultExpired/>} />
+        <Route path="/ticketResultExpired" element={<TicketResultExpired />} />
+
+        <Route path="/admin/manageMovies" element={<ManageMovie />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/manageSchedule" element={<ManageSchedule />} />
       </Routes>
     </BrowserRouter>
   );

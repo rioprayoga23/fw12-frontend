@@ -7,8 +7,8 @@ module.exports = {
         hero: "url('../img/background-hero.png')",
       },
       colors: {
-        colorAuth: "rgba(43, 21, 107, 0.8)",
-        primary: "#5F2EEA",
+        colorAuth: "#0B8457",
+        primary: "#1C7947",
         secondary: "#F5F6F8",
       },
       fontFamily: {
@@ -26,6 +26,8 @@ module.exports = {
       },
     },
     screens: {
+      xxl: { max: "1440px" },
+
       xl: { max: "1279px" },
 
       lg: { max: "1023px" },
