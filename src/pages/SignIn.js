@@ -25,7 +25,7 @@ const SignIn = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center w-2/4 lg:w-full">
-        <div className="w-full px-24 md:px-7 lg:px-32 lg:my-16 xl:px-10">
+        <div className="w-full px-14 md:px-7 lg:px-32 lg:my-16 xl:px-10">
           <div className="font-Inter">
             <h1 className="text-5xl font-semibold mb-4">Sign In</h1>
             <p className="text-[#AAAAAA] text-md mb-9">
