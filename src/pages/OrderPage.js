@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 const OrderPage = () => {
   return (
     <Fragment>
-      <Navbar />
+      <Navbar login={true} />
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish">
         <div className="w-2/3">
           <div>

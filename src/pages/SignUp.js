@@ -25,10 +25,10 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center w-2/4 max-h-screen overflow-y-scroll lg:w-full">
+      <div className="flex flex-col w-2/4 max-h-screen overflow-y-scroll lg:w-full">
         <div className="w-full px-14 pb-20 md:px-7 lg:px-32">
           <div className="font-Inter">
-            <h1 className="text-5xl font-semibold mb-4 pt-96 md:pt-96 lg:pt-60 xl:pt-10">
+            <h1 className="text-5xl font-semibold mb-4 pt-24 md:pt-16 lg:pt-24">
               Sign Up
             </h1>
             <p className="text-[#AAAAAA] text-md mb-9">Fill your additional</p>

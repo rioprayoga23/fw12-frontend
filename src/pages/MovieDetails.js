@@ -9,7 +9,7 @@ import ShowtimeCinema from "../components/ShowtimeCinema";
 const MovieDetails = () => {
   return (
     <Fragment>
-      <Navbar />
+      <Navbar login={true} />
       <div className="px-24 flex mt-10 gap-10 pb-14 font-Mulish">
         <div className="p-5 border-2 border-secondary rounded-xl h-fit">
           <img src={spiderman} alt="" className="w-46 h-64 bg-cover" />
@@ -74,7 +74,7 @@ const MovieDetails = () => {
             <label>{<ChevronDown />}</label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 m-1"
             >
               <li>
                 <Link to="">Bandung</Link>
@@ -94,13 +94,13 @@ const MovieDetails = () => {
         <ShowtimeCinema />
       </div>
       <div className="flex bg-secondary justify-center items-center px-24 gap-1 pb-20">
-        <div className="h-1 bg-[#DEDEDE] w-full"></div>
+        <div className="h-[2px] bg-[#DEDEDE] w-full"></div>
         <Link to="">
           <div className="w-48 text-center text-primary font-semibold">
             view more
           </div>
         </Link>
-        <div className="h-1 bg-[#DEDEDE] w-full"></div>
+        <div className="h-[2px] bg-[#DEDEDE] w-full"></div>
       </div>
       <Footer />
     </Fragment>

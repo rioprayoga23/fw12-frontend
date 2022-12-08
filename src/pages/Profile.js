@@ -11,7 +11,8 @@ import FormInput from "../components/form/FormInput";
 const Profile = () => {
   return (
     <Fragment>
-      <Navbar />
+      <Navbar login={true} />
+
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish">
         <div className="w-1/4">
           <div className="bg-white rounded-md mt-10">

@@ -67,7 +67,7 @@ const ForgotPassword = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center w-2/4 lg:w-full lg:mt-20">
-        <div className="w-full px-14 md:px-7 lg:px-32 lg:my-16">
+        <div className="w-full px-14 md:px-7 lg:px-32 lg:my-4">
           <div className="font-Inter">
             <h1 className="text-2xl font-semibold mb-4">
               Fill your complete email

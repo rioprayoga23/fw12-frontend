@@ -21,28 +21,33 @@ const VIewAll = () => {
 
   return (
     <Fragment>
-      <Navbar />
+      <Navbar login={true} />
+
       <div className="bg-secondary pb-10">
         <div className="flex items-center px-24 pt-10 pb-7">
           <div className="flex-1 font-Mulish font-bold text-xl">
             <h3>List Movie</h3>
           </div>
           <div className="flex items-center gap-5 font-Mulish">
-            <div
-              className="dropdown dropdown-bottom dropdown-end border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl flex"
-              tabIndex={0}
-            >
-              <label className="flex-1">Sort</label>
-              <label>{<ChevronDown />}</label>
+            <div className="dropdown dropdown-bottom dropdown-end">
+              <div
+                tabIndex={0}
+                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center"
+              >
+                <span className="flex-1">Sort</span>
+                <div>
+                  <ChevronDown />
+                </div>
+              </div>
               <ul
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to="">Genre</Link>
+                  <Link to="/viewAll">Popular</Link>
                 </li>
                 <li>
-                  <Link to="">Z-A</Link>
+                  <Link to="/viewAll">Z-A</Link>
                 </li>
               </ul>
             </div>

@@ -6,7 +6,8 @@ import Footer from "../components/Footer";
 const TicketResultExpired = () => {
   return (
     <Fragment>
-      <Navbar />
+      <Navbar login={true} />
+
       <div className="bg-secondary py-20 px-64 font-Mulish">
         <div className="bg-white flex flex-col items-center p-10">
           <h3 className="text-lg font-semibold mb-10">Proof of Payment</h3>

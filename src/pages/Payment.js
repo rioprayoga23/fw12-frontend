@@ -19,7 +19,7 @@ import FormLabel from "../components/form/FormLabel";
 const Payment = () => {
   return (
     <Fragment>
-      <Navbar />
+      <Navbar login={true} />
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish">
         <div className="w-2/3">
           <div>

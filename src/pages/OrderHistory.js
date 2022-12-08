@@ -9,7 +9,7 @@ import ebvId from "../assets/img/ebu.png";
 const OrderHistory = () => {
   return (
     <Fragment>
-      <Navbar />
+      <Navbar login={true} />
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish">
         <div className="w-1/4">
           <div className="bg-white rounded-md mt-10">
@@ -89,7 +89,7 @@ const OrderHistory = () => {
               <div className="w-48 bg-[#6E7191] text-center p-2 rounded-md text-white">
                 Ticket used
               </div>
-              <Link to="/ticketResult" className="text-[#AAAAAA]">
+              <Link to="/ticketResultUsed" className="text-[#AAAAAA]">
                 See Details
               </Link>
             </div>
@@ -112,7 +112,7 @@ const OrderHistory = () => {
               <div className="w-48 bg-red-500 text-center p-2 rounded-md text-white">
                 Ticket expired
               </div>
-              <Link to="/ticketResult" className="text-[#AAAAAA]">
+              <Link to="/ticketResultExpired" className="text-[#AAAAAA]">
                 See Details
               </Link>
             </div>
