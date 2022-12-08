@@ -109,7 +109,7 @@ const Payment = () => {
 
         <div className="w-1/3">
           <h3 className="text-xl font-bold mt-10 mb-6">Personal Info</h3>
-          <div className="bg-white rounded-md p-5 ">
+          <div className="bg-white rounded-md p-7 ">
             <div>
               <FormLabel for="Full Name" />
               <input
