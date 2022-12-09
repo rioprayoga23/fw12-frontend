@@ -8,7 +8,7 @@ const CardMovie = (props) => {
       {data?.results?.map((movie) => {
         return (
           <div
-            className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:w-32 md:p-2 flex flex-col items-center justify-center lg:w-48 lg:mr-0"
+            className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:w-32 md:p-2 flex flex-col items-center justify-center lg:w-48 lg:mr-0 md:m-2"
             key={String(movie.id)}
           >
             <img

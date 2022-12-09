@@ -115,7 +115,7 @@ const Profile = () => {
               <div className="border border-b my-5"></div>
               <div className="flex gap-4 md:flex-col lg:flex-col">
                 <div className="flex flex-col flex-1 ">
-                  <FormLabel for="firstName" name="New Password" />
+                  <FormLabel for="password" name="New Password" />
                   <FormInputPassword
                     id={"password"}
                     type={"password"}
@@ -124,11 +124,11 @@ const Profile = () => {
                   />
                 </div>
                 <div className="flex flex-col flex-1">
-                  <FormLabel for="lastName" name="Confirm Password" />
+                  <FormLabel for="confirmPassword" name="Confirm Password" />
                   <FormInputPassword
-                    id={"password"}
+                    id={"confirmPassword"}
                     type={"password"}
-                    name={"password"}
+                    name={"confirmPassword"}
                     placeholder={"Confirm your password"}
                   />
                 </div>
