@@ -21,15 +21,15 @@ const ManageSchedule = () => {
   return (
     <Fragment>
       <NavbarAdmin />
-      <div className="bg-secondary px-24 py-16 font-Mulish pb-10">
+      <div className="bg-secondary px-24 py-16 font-Mulish pb-10 md:px-5 lg:px-10 xl:px-10">
         <h3 className="text-xl font-bold mb-6">Form Movie</h3>
         <div className="bg-white">
-          <div className="flex p-10 gap-10">
+          <div className="flex p-10 gap-10 md:flex-col md:p-5 md:items-center lg:flex-col lg:items-center">
             <div>
               <CardMovieDetail />
             </div>
             <div className="w-full flex-1">
-              <div className="flex gap-10 mb-5">
+              <div className="flex gap-10 mb-5 md:flex-col md:gap-5">
                 <div className="flex flex-col flex-1">
                   <FormLabel for={"movie"} name="Movie" />
                   <select
@@ -60,7 +60,7 @@ const ManageSchedule = () => {
                 </div>
               </div>
 
-              <div className="flex gap-10">
+              <div className="flex gap-10 md:flex-col md:gap-0">
                 <div className="flex flex-col flex-1">
                   <FormLabel for={"director"} name="Director" />
                   <FormInput
@@ -81,7 +81,7 @@ const ManageSchedule = () => {
                 </div>
               </div>
 
-              <div className="flex gap-10">
+              <div className="flex gap-10 md:flex-col md:gap-0">
                 <div className="flex flex-col flex-1">
                   <FormLabel for={"price"} name="Price" />
                   <FormInput
@@ -91,8 +91,8 @@ const ManageSchedule = () => {
                     placeholder={"10"}
                   />
                 </div>
-                <div className="flex flex-1 gap-4">
-                  <div className="flex flex-col flex-1 w-20">
+                <div className="flex flex-1 gap-4 md:flex-col md:gap-0">
+                  <div className="flex flex-col flex-1 w-20 md:w-full">
                     <FormLabel for={"dateStart"} name="Date Start" />
                     <FormInput
                       id={"dateStart"}
@@ -101,7 +101,7 @@ const ManageSchedule = () => {
                       placeholder={"07/05/2020"}
                     />
                   </div>
-                  <div className="flex flex-col flex-1 w-20">
+                  <div className="flex flex-col flex-1 w-20 md:w-full">
                     <FormLabel for={"dateEnd"} name="Date End" />
                     <FormInput
                       id={"dateEnd"}
@@ -113,7 +113,7 @@ const ManageSchedule = () => {
                 </div>
               </div>
 
-              <div className="flex gap-10">
+              <div className="flex gap-10 md:flex-col">
                 <div className="flex-1">
                   <FormLabel for={"premiere"} name="Premiere" />
                   <div className="flex gap-4 items-center mt-3">
@@ -131,8 +131,8 @@ const ManageSchedule = () => {
                 <div className="flex-1">
                   <FormLabel for={"time"} name="Time" />
                   <div className="flex gap-4 items-center mt-3">
-                    <div className="grid grid-cols-4 gap-6 items-center">
-                      <div className="border-2 border-primary py-1 px-6 rounded-lg">
+                    <div className="grid grid-cols-4 gap-6 items-center md:grid-cols-3 lg:grid-cols-3">
+                      <div className="border-2 border-primary py-1 px-6 rounded-lg flex items-center justify-center md:px-0">
                         <Plus />
                       </div>
                       <div>08:30am</div>
@@ -149,25 +149,25 @@ const ManageSchedule = () => {
             </div>
           </div>
 
-          <div className="flex gap-5 justify-end px-10 mt-10 pb-10">
-            <div className="w-[150px]">
+          <div className="flex gap-5 justify-end px-10 mt-10 pb-10 md:flex-col md:px-5 lg:px-5">
+            <div className="w-[150px] md:w-full">
               <ButtonMediumOutline name={"Reset"} />
             </div>
-            <div className="w-[150px]">
+            <div className="w-[150px] md:w-full">
               <ButtonMediumPrimary name={"Submit"} />
             </div>
           </div>
         </div>
 
-        <div className="flex items-center pt-10 pb-7">
-          <div className="flex-1 font-Mulish font-bold text-xl">
+        <div className="flex items-center pt-10 pb-7 md:flex-col md:w-full md:items-start">
+          <div className="flex-1 font-Mulish font-bold text-xl md:mb-5">
             <h3>Data Schedule</h3>
           </div>
-          <div className="flex items-center gap-3 font-Mulish">
-            <div className="dropdown dropdown-bottom dropdown-end">
+          <div className="flex items-center gap-3 font-Mulish md:flex-col md:w-full">
+            <div className="dropdown dropdown-bottom dropdown-end md:w-full">
               <div
                 tabIndex={0}
-                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center"
+                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center md:w-full md:m-0"
               >
                 <span className="flex-1">Sort</span>
                 <div>
@@ -176,7 +176,7 @@ const ManageSchedule = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 md:w-full"
               >
                 <li>
                   <Link to="/viewAll">Popular</Link>
@@ -186,10 +186,10 @@ const ManageSchedule = () => {
                 </li>
               </ul>
             </div>
-            <div className="dropdown dropdown-bottom dropdown-end">
+            <div className="dropdown dropdown-bottom dropdown-end md:w-full">
               <div
                 tabIndex={0}
-                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center"
+                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center md:w-full md:m-0"
               >
                 <span className="flex-1">Location</span>
                 <div>
@@ -198,7 +198,7 @@ const ManageSchedule = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 md:w-full"
               >
                 <li>
                   <Link to="/viewAll">Bandung</Link>
@@ -208,10 +208,10 @@ const ManageSchedule = () => {
                 </li>
               </ul>
             </div>
-            <div className="dropdown dropdown-bottom dropdown-end">
+            <div className="dropdown dropdown-bottom dropdown-end md:w-full">
               <div
                 tabIndex={0}
-                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center"
+                className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center md:w-full md:m-0"
               >
                 <span className="flex-1">Movie</span>
                 <div>
@@ -220,7 +220,7 @@ const ManageSchedule = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 md:w-full"
               >
                 <li>
                   <Link to="/viewAll">Spiderman</Link>

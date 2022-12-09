@@ -9,14 +9,14 @@ const Dashboard = () => {
   return (
     <Fragment>
       <NavbarAdmin />
-      <div className="flex font-Mulish px-24 bg-secondary py-16 gap-5">
-        <div className="w-3/4">
+      <div className="flex font-Mulish px-24 bg-secondary py-16 gap-5 md:px-5 md:flex-col lg:px-5">
+        <div className="w-3/4 md:w-full lg:w-2/3">
           <h3 className="font-semibold text-lg">Dashboard</h3>
           <div className="mt-7">
             <img src={dashboardImg} alt="" />
           </div>
         </div>
-        <div className="w-1/4">
+        <div className="w-1/4 md:w-full lg:w-1/3">
           <h3 className="font-semibold text-lg">Filtered</h3>
           <div className="bg-white mt-7 p-5 rounded-md flex flex-col gap-5">
             <select className="select select-bordered w-full max-w-xs focus:outline-none">
@@ -47,7 +47,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 };
