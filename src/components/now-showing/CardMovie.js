@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import ButtonSmallPrimary from "../ButtonSmallPrimary";
+import { Link } from "react-router-dom";
 
 const CardMovie = (props) => {
   const { data } = props;
@@ -25,10 +25,11 @@ const CardMovie = (props) => {
                   {movie.genre}
                 </p>
               </div>
-              <ButtonSmallPrimary
-                name={"Details"}
-                link={`/movieDetails/${movie.id}`}
-              />
+              <Link to={`/movieDetails/${movie.id}`}>
+                <div className="w-full border-2 border-primary rounded-md text-center py-1 mt-4 font-Mulish text-primary text-sm cursor-pointer">
+                  Details
+                </div>
+              </Link>
             </div>
           </div>
         );

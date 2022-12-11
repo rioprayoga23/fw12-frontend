@@ -9,7 +9,6 @@ import { default as CardMovieNowShowing } from "../components/now-showing/CardMo
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
-import ButtonSmallPrimary from "../components/ButtonSmallPrimary";
 
 const Home = () => {
   const [nowShowing, setNowShowing] = useState({});
@@ -91,10 +90,7 @@ const Home = () => {
             <BtnMonth month={"August"} />
           </div>
           <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
-            <CardMovie
-              data={upComing}
-              btn={[<ButtonSmallPrimary name="Details" link="movieDetails" />]}
-            />
+            <CardMovie data={upComing} />
           </div>
         </section>
         <section className="px-24 font-Mulish pb-20 md:px-5 lg:px-10">
