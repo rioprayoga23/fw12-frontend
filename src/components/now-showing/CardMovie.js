@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-
 import ButtonSmallPrimary from "../ButtonSmallPrimary";
 
 const CardMovie = (props) => {
@@ -26,7 +25,10 @@ const CardMovie = (props) => {
                   {movie.genre}
                 </p>
               </div>
-              <ButtonSmallPrimary name={"Details"} link="/movieDetails" />
+              <ButtonSmallPrimary
+                name={"Details"}
+                link={`/movieDetails/${movie.id}`}
+              />
             </div>
           </div>
         );

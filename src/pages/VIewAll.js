@@ -6,7 +6,6 @@ import { ChevronDown } from "react-feather";
 import BtnMonth from "../components/filter/BtnMonth";
 import CardMovie from "../components/CardMovie";
 import axios from "axios";
-import ButtonSmallPrimary from "../components/ButtonSmallPrimary";
 import Pagination from "../components/now-showing/Pagination";
 
 const VIewAll = () => {
@@ -79,10 +78,7 @@ const VIewAll = () => {
         </div>
 
         <div className="mx-24 mt-10 gap-5 py-10 flex flex-wrap bg-white justify-center md:mx-0 md:justify-center md:gap-3 lg:mx-10">
-          <CardMovie
-            data={allMovies}
-            btn={[<ButtonSmallPrimary name="Details" link="/movieDetails" />]}
-          />
+          <CardMovie data={allMovies} />
         </div>
         <Pagination />
       </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ebvId from "../assets/img/ebu.png";
 
 const ShowtimeCinema = () => {
@@ -30,12 +29,13 @@ const ShowtimeCinema = () => {
         <h3 className="flex-1 font-semibold text-[#6B6B6B] text-lg">Price</h3>
         <h3 className="font-semibold text-xl">$10.00/seat</h3>
       </div>
-      <div className="px-10 md:px-5 ">
-        <Link to="/order">
-          <button className="w-full bg-primary py-2 shadow-primary rounded-md text-white">
-            Book now
-          </button>
-        </Link>
+      <div className="px-10 flex gap-2 md:px-5 md:flex-col mt-5">
+        <button className="w-full border-2 border-primary py-2 shadow-primary rounded-md text-primary">
+          Update
+        </button>
+        <button className="w-full border-2 border-red-500 py-2 shadow-primary rounded-md text-red-500">
+          Delete
+        </button>
       </div>
     </div>
   );

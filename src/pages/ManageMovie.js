@@ -6,10 +6,8 @@ import axios from "axios";
 
 import FormInput from "../components/form/FormInput";
 import FormLabel from "../components/form/FormLabel";
-import CardMovie from "../components/CardMovie";
+import CardMovieAdmin from "../components/CardMovieAdmin";
 import Footer from "../components/Footer";
-import ButtonSmallPrimary from "../components/ButtonSmallPrimary";
-import ButtonSmallOutline from "../components/ButtonSmallOutline";
 import Pagination from "../components/now-showing/Pagination";
 import NavbarAdmin from "../components/NavbarAdmin";
 import ButtonMediumPrimary from "../components/ButtonMediumPrimary";
@@ -171,13 +169,7 @@ const ManageMovie = () => {
           </div>
         </div>
         <div className="gap-5 py-10 flex flex-wrap bg-white justify-center md:gap-0">
-          <CardMovie
-            data={allMovies}
-            btn={[
-              <ButtonSmallPrimary name="Update" link="" />,
-              <ButtonSmallOutline name="Delete" link="" />,
-            ]}
-          />
+          <CardMovieAdmin data={allMovies} />
         </div>
         <Pagination />
       </div>

@@ -13,9 +13,7 @@ import ButtonMediumPrimary from "../components/ButtonMediumPrimary";
 import ButtonMediumOutline from "../components/ButtonMediumOutline";
 
 import ebvId from "../assets/img/ebu.png";
-import ShowtimeCinema from "../components/ShowtimeCinema";
-import ButtonSmallPrimary from "../components/ButtonSmallPrimary";
-import ButtonSmallOutline from "../components/ButtonSmallOutline";
+import ShowtimeCinemaAdmin from "../components/ShowtimeCinemaAdmin";
 
 const ManageSchedule = () => {
   return (
@@ -233,42 +231,12 @@ const ManageSchedule = () => {
           </div>
         </div>
         <div className="gap-5 py-10 flex flex-wrap bg-white justify-center">
-          <ShowtimeCinema
-            btn={[
-              <ButtonSmallPrimary name={"Update"} link={""} />,
-              <ButtonSmallOutline name={"Delete"} link={""} />,
-            ]}
-          />
-          <ShowtimeCinema
-            btn={[
-              <ButtonSmallPrimary name={"Update"} link={""} />,
-              <ButtonSmallOutline name={"Delete"} link={""} />,
-            ]}
-          />
-          <ShowtimeCinema
-            btn={[
-              <ButtonSmallPrimary name={"Update"} link={""} />,
-              <ButtonSmallOutline name={"Delete"} link={""} />,
-            ]}
-          />
-          <ShowtimeCinema
-            btn={[
-              <ButtonSmallPrimary name={"Update"} link={""} />,
-              <ButtonSmallOutline name={"Delete"} link={""} />,
-            ]}
-          />
-          <ShowtimeCinema
-            btn={[
-              <ButtonSmallPrimary name={"Update"} link={""} />,
-              <ButtonSmallOutline name={"Delete"} link={""} />,
-            ]}
-          />
-          <ShowtimeCinema
-            btn={[
-              <ButtonSmallPrimary name={"Update"} link={""} />,
-              <ButtonSmallOutline name={"Delete"} link={""} />,
-            ]}
-          />
+          {<ShowtimeCinemaAdmin />}
+          {<ShowtimeCinemaAdmin />}
+          {<ShowtimeCinemaAdmin />}
+          {<ShowtimeCinemaAdmin />}
+          {<ShowtimeCinemaAdmin />}
+          {<ShowtimeCinemaAdmin />}
         </div>
         <Pagination />
       </div>

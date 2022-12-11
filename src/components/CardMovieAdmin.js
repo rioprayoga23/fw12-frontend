@@ -26,9 +26,14 @@ const CardMovie = (props) => {
                   {movie.genre}
                 </p>
               </div>
-              <Link to={`/movieDetails/${movie.id}`}>
+              <Link to={`/updateMovie/${movie.id}`}>
                 <div className="w-full border-2 border-primary rounded-md text-center py-1 mt-4 font-Mulish text-primary text-sm cursor-pointer">
-                  Details
+                  Update
+                </div>
+              </Link>
+              <Link to={`/deleteMovie/${movie.id}`}>
+                <div className="w-full border-2 border-red-500 rounded-md text-center py-1 mt-4 font-Mulish text-primary text-sm cursor-pointer">
+                  Delete
                 </div>
               </Link>
             </div>
