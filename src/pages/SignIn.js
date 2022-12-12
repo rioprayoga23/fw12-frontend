@@ -16,7 +16,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const message = useSelector((state) => state.message);
+  const message = useSelector((state) => state.auth.message);
 
   const handlerLogin = (event) => {
     event.preventDefault();
