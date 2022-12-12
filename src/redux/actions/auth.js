@@ -12,7 +12,7 @@ export const loginAction = createAsyncThunk(
       });
 
       const { data } = await axios.post(
-        "http://localhost:8888/auth/login",
+        "https://fw12-backend-roan.vercel.app/auth/login",
         form
       );
       cb();
