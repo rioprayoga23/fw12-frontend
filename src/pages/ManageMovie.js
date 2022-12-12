@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment, useEffect, useState } from "react";
 import CardMovieDetail from "../components/CardMovieDetail";
 import { Link } from "react-router-dom";

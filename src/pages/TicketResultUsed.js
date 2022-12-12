@@ -1,13 +1,17 @@
+// @ts-nocheck
+
 import React, { Fragment } from "react";
 import Navbar from "../components/Navbar";
 import brandSmall from "../assets/img/brand-white.png";
-import barcode from "../assets/img/barcode.png";
 import Footer from "../components/Footer";
+import { useSelector } from "react-redux";
 
 const TicketResultUsed = (props) => {
+  const token = useSelector((state) => state.auth.token);
+
   return (
     <Fragment>
-      <Navbar login={true} />
+      <Navbar login={token} />
 
       <div className="bg-secondary py-20 px-64 font-Mulish md:px-5 lg:px-5 xl:px-10">
         <div className="bg-white flex flex-col items-center p-10 md:p-5">

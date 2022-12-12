@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from "react";
 import Brand from "../assets/img/brand.png";
 import { useNavigate } from "react-router-dom";

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -7,9 +9,12 @@ import ShowtimeCinema from "../components/ShowtimeCinema";
 import CardMovieDetail from "../components/CardMovieDetail";
 import axios from "axios";
 import NotFound from "../components/NotFound";
+import { useSelector } from "react-redux";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
+  const token = useSelector((state) => state.auth.token);
+
   const { id } = useParams();
 
   const getMovieDetails = async () => {
@@ -23,7 +28,7 @@ const MovieDetails = () => {
 
   return (
     <Fragment>
-      <Navbar login={true} />
+      <Navbar login={token} />
 
       {movieDetails.results ? (
         <Fragment>

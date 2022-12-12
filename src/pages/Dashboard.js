@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment } from "react";
 import NavbarAdmin from "../components/NavbarAdmin";
 import dashboardImg from "../assets/img/Dashboard.png";

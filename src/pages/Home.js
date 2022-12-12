@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,10 +10,13 @@ import { default as CardMovieNowShowing } from "../components/now-showing/CardMo
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [nowShowing, setNowShowing] = useState({});
   const [upComing, setUpComing] = useState({});
+
+  const token = useSelector((state) => state.auth.token);
 
   const getNowShowing = async () => {
     const { data } = await axios.get(
@@ -35,7 +39,7 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar login={token} />
       <header className="flex items-center px-24 mt-10 pb-20 md:px-5 md:flex-col md:items-start lg:px-10">
         <section className="font-Mulish flex-1">
           <p className="text-xl text-[#A0A3BD] mb-5 md:text-md md:mb-1 md:text-base">

@@ -1,10 +1,21 @@
 import React from "react";
 import brandNav from "../assets/img/brand-small.png";
 import profileImg from "../assets/img/Ellipse 11.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Search, Menu } from "react-feather";
+import { useDispatch } from "react-redux";
+
+import { logout as logoutAction } from "../redux/reducers/auth";
 
 const Navbar = (props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handlerLogout = () => {
+    dispatch(logoutAction());
+    navigate("/signIn");
+  };
+
   const login = props.login;
   return (
     <nav className="flex items-center py-5 px-24 font-Mulish font-semibold md:px-5 lg:px-10">
@@ -41,7 +52,9 @@ const Navbar = (props) => {
                 <Link to="/profile">Profile</Link>
               </li>
               <li>
-                <Link to="/signIn">Logout</Link>
+                <button type="button" onClick={handlerLogout}>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
@@ -112,7 +125,7 @@ const Navbar = (props) => {
                         <Link to="/profile">Profile</Link>
                       </li>
                       <li>
-                        <Link to="/signIn">Logout</Link>
+                        <button type="submit">Logout</button>
                       </li>
                     </ul>
                   </div>

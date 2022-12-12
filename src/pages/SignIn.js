@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from "react";
 import brand from "../assets/img/brand.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,11 +9,25 @@ import FormInputPassword from "../components/form/FormInputPassword";
 import FormLabel from "../components/form/FormLabel";
 import ButtonAction from "../components/form/ButtonAction";
 
+import { loginAction } from "../redux/actions/auth";
+import { useDispatch, useSelector } from "react-redux";
+
 const SignIn = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handlerLogin = () => {
-    navigate("/");
+  const message = useSelector((state) => state.message);
+
+  const handlerLogin = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    const cb = () => {
+      navigate("/");
+    };
+
+    dispatch(loginAction({ email, password, cb }));
   };
 
   return (
@@ -31,6 +47,12 @@ const SignIn = () => {
             <p className="text-[#AAAAAA] text-md mb-9">
               Sign in with your data that you entered during your registration
             </p>
+
+            {message && (
+              <div className="p-4 bg-red-300 border-2 border-red-500 rounded-xl mb-5 text-center">
+                {message}
+              </div>
+            )}
           </div>
           <form onSubmit={handlerLogin}>
             <div className="flex flex-col">

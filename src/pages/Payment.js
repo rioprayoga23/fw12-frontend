@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
@@ -15,11 +17,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PaymentMethod from "../components/PaymentMethod";
 import FormLabel from "../components/form/FormLabel";
+import { useSelector } from "react-redux";
 
 const Payment = () => {
+  const token = useSelector((state) => state.auth.token);
+
   return (
     <Fragment>
-      <Navbar login={true} />
+      <Navbar login={token} />
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 lg:px-10 md:flex-col-reverse">
         <div className="w-2/3 md:w-full">
           <div>

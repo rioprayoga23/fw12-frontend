@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { Fragment } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
@@ -7,11 +9,14 @@ import Footer from "../components/Footer";
 import FormInputPassword from "../components/form/FormInputPassword";
 import FormLabel from "../components/form/FormLabel";
 import FormInput from "../components/form/FormInput";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const token = useSelector((state) => state.auth.token);
+
   return (
     <Fragment>
-      <Navbar login={true} />
+      <Navbar login={token} />
 
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 lg:px-10 md:flex-col">
         <div className="w-1/4 md:w-full lg:w-1/3">

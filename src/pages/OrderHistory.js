@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { Fragment } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
@@ -5,11 +7,15 @@ import profile from "../assets/img/profile.png";
 
 import Footer from "../components/Footer";
 import ebvId from "../assets/img/ebu.png";
+import { useSelector } from "react-redux";
 
 const OrderHistory = () => {
+  const token = useSelector((state) => state.auth.token);
+
   return (
     <Fragment>
-      <Navbar login={true} />
+      <Navbar login={token} />
+
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col">
         <div className="w-1/4 md:w-full">
           <div className="bg-white rounded-md mt-10">

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -7,9 +8,11 @@ import BtnMonth from "../components/filter/BtnMonth";
 import CardMovie from "../components/CardMovie";
 import axios from "axios";
 import Pagination from "../components/now-showing/Pagination";
+import { useSelector } from "react-redux";
 
 const VIewAll = () => {
   const [allMovies, setAllMovies] = useState({});
+  const token = useSelector((state) => state.auth.token);
 
   const getAllMovies = async () => {
     const { data } = await axios.get("http://localhost:8888/movies?limit=8");
@@ -22,7 +25,7 @@ const VIewAll = () => {
 
   return (
     <Fragment>
-      <Navbar login={true} />
+      <Navbar login={token} />
 
       <div className="bg-secondary pb-10">
         <div className="flex items-center px-24 pt-10 pb-7 md:px-5 lg:px-10 md:flex-col md:items-start">
