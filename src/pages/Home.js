@@ -20,14 +20,14 @@ const Home = () => {
 
   const getNowShowing = async () => {
     const { data } = await axios.get(
-      "http://fw12-backend-roan.vercel.app/movies/now?limit=7"
+      "https://fw12-backend-roan.vercel.app/movies/now?limit=7"
     );
     setNowShowing(data);
   };
 
   const getUpComing = async () => {
     const { data } = await axios.get(
-      "http://fw12-backend-roan.vercel.app/movies/upcoming?limit=7"
+      "https://fw12-backend-roan.vercel.app/movies/upcoming?limit=7"
     );
     setUpComing(data);
   };
