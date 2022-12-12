@@ -49,7 +49,7 @@ const SignIn = () => {
             </p>
 
             {message && (
-              <div className="p-4 bg-red-300 border-2 border-red-500 rounded-xl mb-5 text-center">
+              <div className="p-4 bg-red-200 border-2 border-red-300 rounded-xl mb-5 text-center">
                 {message}
               </div>
             )}
