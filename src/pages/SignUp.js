@@ -15,6 +15,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const message = useSelector((state) => state.auth.message);
+  console.log(message);
 
   const handlerSignUp = (event) => {
     event.preventDefault();
