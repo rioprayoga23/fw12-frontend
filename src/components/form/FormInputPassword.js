@@ -23,6 +23,7 @@ const InputPasswordAuth = (props) => {
         name={props.name}
         placeholder={props.placeholder}
         className="border-2 p-4 rounded-2xl mb-5 w-full focus:outline-none"
+        required
       />
       {showPassword ? (
         <Eye

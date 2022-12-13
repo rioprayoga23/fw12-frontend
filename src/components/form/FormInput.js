@@ -8,6 +8,7 @@ const InputAuth = (props) => {
       name={props.name}
       placeholder={props.placeholder}
       className="border-2 p-4 rounded-2xl mb-5 focus:outline-none"
+      required
     />
   );
 };
