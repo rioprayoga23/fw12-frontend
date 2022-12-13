@@ -15,7 +15,9 @@ const VIewAll = () => {
   const token = useSelector((state) => state.auth.token);
 
   const getAllMovies = async () => {
-    const { data } = await axios.get("http://localhost:8888/movies?limit=8");
+    const { data } = await axios.get(
+      "https://fw12-backend-roan.vercel.app/movies?limit=8"
+    );
     setAllMovies(data);
   };
 
