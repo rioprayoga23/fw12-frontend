@@ -22,3 +22,27 @@ export const loginAction = createAsyncThunk(
     }
   }
 );
+
+export const registerAction = createAsyncThunk(
+  "auth/registerAsync",
+  async ({ firstName, lastName, phoneNumber, email, password, cb }) => {
+    try {
+      const form = new URLSearchParams({
+        firstName,
+        lastName,
+        phoneNumber,
+        email,
+        password,
+      });
+
+      const { data } = await axios.post(
+        "https://fw12-backend-roan.vercel.app/auth/register",
+        form
+      );
+      cb();
+      return data.results.token;
+    } catch (err) {
+      throw err.response.data.message;
+    }
+  }
+);

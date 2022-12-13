@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import React from "react";
 import brand from "../assets/img/brand.png";
 
@@ -9,12 +7,32 @@ import FormInput from "../components/form/FormInput";
 import FormInputPassword from "../components/form/FormInputPassword";
 import FormLabel from "../components/form/FormLabel";
 import ButtonAction from "../components/form/ButtonAction";
+import { useDispatch, useSelector } from "react-redux";
+import { registerAction } from "../redux/actions/auth";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handlerSignUp = () => {
-    navigate("/signIn");
+  const message = useSelector((state) => state.auth.message);
+
+  const handlerSignUp = (event) => {
+    event.preventDefault();
+    const firstName = event.target.firstName.value;
+    const lastName = event.target.lastName.value;
+    const phoneNumber = event.target.phoneNumber.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    const cb = () => {
+      navigate("/");
+    };
+
+    console.log(firstName, lastName, phoneNumber, email, password);
+
+    // dispatch(
+    //   registerAction({ firstName, lastName, phoneNumber, email, password, cb })
+    // );
   };
 
   return (

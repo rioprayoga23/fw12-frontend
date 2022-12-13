@@ -2,6 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { loginAction } from "../actions/auth";
+import { registerAction } from "../actions/auth";
 
 const initialState = {
   token: null,
@@ -21,6 +22,13 @@ const authReducer = createSlice({
       state.token = payload;
     });
     build.addCase(loginAction.rejected, (state, action) => {
+      state.message = action.error.message;
+    });
+
+    build.addCase(registerAction.fulfilled, (state, { payload }) => {
+      state.token = payload;
+    });
+    build.addCase(registerAction.rejected, (state, action) => {
       state.message = action.error.message;
     });
   },
