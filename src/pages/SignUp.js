@@ -26,7 +26,7 @@ const SignUp = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    if (message) {
+    if (message === "") {
       setLoading(false);
     }
 
