@@ -18,7 +18,9 @@ const MovieDetails = () => {
   const { id } = useParams();
 
   const getMovieDetails = async () => {
-    const { data } = await axios.get(`http://localhost:8888/movies/${id}`);
+    const { data } = await axios.get(
+      `https://fw12-backend-roan.vercel.app/movies/${id}`
+    );
     setMovieDetails(data);
   };
 
