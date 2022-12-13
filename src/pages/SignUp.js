@@ -96,17 +96,18 @@ const SignUp = () => {
               />
             </div>
             <ButtonAction name={"Sign Up"} />
-            <div className="flex flex-col items-center mt-7 gap-2">
-              <p className="text-[#8692A6]">
-                Already have account?
-                <span>
-                  <Link to="/signIn" className="text-primary underline">
-                    Sign In
-                  </Link>
-                </span>
-              </p>
-            </div>
           </form>
+
+          <div className="flex flex-col items-center mt-7 gap-2">
+            <p className="text-[#8692A6]">
+              Already have account?
+              <span>
+                <Link to="/signIn" className="text-primary underline">
+                  Sign In
+                </Link>
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
