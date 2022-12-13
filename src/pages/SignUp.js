@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import brand from "../assets/img/brand.png";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -15,9 +15,11 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const message = useSelector((state) => state.auth.message);
+  const [loading, setLoading] = useState(false);
 
   const handlerSignUp = (event) => {
     event.preventDefault();
+    setLoading(true);
     const firstName = event.target.firstName.value;
     const lastName = event.target.lastName.value;
     const phoneNumber = event.target.phoneNumber.value;
@@ -25,6 +27,7 @@ const SignUp = () => {
     const password = event.target.password.value;
 
     const cb = () => {
+      setLoading(false);
       navigate("/");
     };
 
@@ -98,7 +101,7 @@ const SignUp = () => {
                 placeholder={"Write your password"}
               />
             </div>
-            <ButtonAction name={"Sign Up"} />
+            <ButtonAction name={"Sign Up"} loading={loading} />
           </form>
 
           <div className="flex flex-col items-center mt-7 gap-2">
