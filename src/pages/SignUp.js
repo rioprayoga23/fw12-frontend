@@ -26,6 +26,10 @@ const SignUp = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
+    if (message) {
+      setLoading(false);
+    }
+
     const cb = () => {
       setLoading(false);
       navigate("/");
