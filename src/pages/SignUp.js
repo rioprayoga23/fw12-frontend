@@ -30,9 +30,9 @@ const SignUp = () => {
 
     console.log(firstName, lastName, phoneNumber, email, password);
 
-    // dispatch(
-    //   registerAction({ firstName, lastName, phoneNumber, email, password, cb })
-    // );
+    dispatch(
+      registerAction({ firstName, lastName, phoneNumber, email, password, cb })
+    );
   };
 
   return (
