@@ -52,6 +52,11 @@ const SignUp = () => {
               Sign Up
             </h1>
             <p className="text-[#AAAAAA] text-md mb-9">Fill your additional</p>
+            {message && (
+              <div className="p-4 bg-red-200 border-2 border-red-300 rounded-xl mb-5 text-center">
+                {message}
+              </div>
+            )}
           </div>
           <form onSubmit={handlerSignUp}>
             <div className="flex flex-col">

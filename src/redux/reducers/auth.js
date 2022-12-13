@@ -30,7 +30,6 @@ const authReducer = createSlice({
     });
     build.addCase(registerAction.rejected, (state, action) => {
       state.message = action.error.message;
-      console.log(action.error.message);
     });
   },
 });
