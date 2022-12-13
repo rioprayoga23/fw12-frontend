@@ -29,8 +29,6 @@ const SignUp = () => {
       navigate("/");
     };
 
-    console.log(firstName, lastName, phoneNumber, email, password);
-
     dispatch(
       registerAction({ firstName, lastName, phoneNumber, email, password, cb })
     );
