@@ -13,7 +13,7 @@ const CardMovie = (props) => {
             key={String(movie.id)}
           >
             <img
-              src={`http://localhost:8888/uploads/${movie.picture}`}
+              src={`https://fw12-backend-roan.vercel.app/uploads/${movie.picture}`}
               alt=""
               className="w-imgMovie h-imgMovie md:w-28 md:h-36 lg:w-44 lg:h-52"
             />
