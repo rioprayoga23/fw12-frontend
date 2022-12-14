@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import brand from "../assets/img/brand.png";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -9,30 +9,35 @@ import FormLabel from "../components/form/FormLabel";
 import ButtonAction from "../components/form/ButtonAction";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../redux/actions/auth";
+import { clearMessage } from "../redux/reducers/auth";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const [loading, setLoading] = useState(false);
 
-  const message = useSelector((state) => state.auth.message);
-  const [loading, setLoading] = useState(false);
+  const message = useSelector((state) => state.auth.messageRegister);
+
+  // forLoading
+  // useEffect(() => {
+  //   if (message !== "") {
+  //     setLoading(false);
+  //   }
+  // }, [message]);
 
   const handlerSignUp = (event) => {
     event.preventDefault();
-    setLoading(true);
+    // setLoading(true);
     const firstName = event.target.firstName.value;
     const lastName = event.target.lastName.value;
     const phoneNumber = event.target.phoneNumber.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
 
-    if (message !== "") {
-      setLoading(false);
-    }
-
     const cb = () => {
-      setLoading(false);
       navigate("/");
+      // setLoading(false);
+      dispatch(clearMessage());
     };
 
     dispatch(
@@ -105,7 +110,7 @@ const SignUp = () => {
                 placeholder={"Write your password"}
               />
             </div>
-            <ButtonAction name={"Sign Up"} loading={loading} />
+            <ButtonAction name={"Sign Up"} />
           </form>
 
           <div className="flex flex-col items-center mt-7 gap-2">

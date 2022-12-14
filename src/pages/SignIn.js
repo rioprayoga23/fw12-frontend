@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import brand from "../assets/img/brand.png";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -11,20 +11,30 @@ import ButtonAction from "../components/form/ButtonAction";
 
 import { loginAction } from "../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
+import { clearMessage } from "../redux/reducers/auth";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const [loading, setLoading] = useState(false);
+  const message = useSelector((state) => state.auth.messageLogin);
 
-  const message = useSelector((state) => state.auth.message);
+  // useEffect(() => {
+  //   if (message !== "") {
+  //     setLoading(false);
+  //   }
+  // }, [message]);
 
   const handlerLogin = (event) => {
     event.preventDefault();
+    // setLoading(true);
     const email = event.target.email.value;
     const password = event.target.password.value;
 
     const cb = () => {
       navigate("/");
+      // setLoading(false);
+      dispatch(clearMessage());
     };
 
     dispatch(loginAction({ email, password, cb }));
@@ -73,25 +83,25 @@ const SignIn = () => {
               />
             </div>
             <ButtonAction name={"Sign In"} />
-            <div className="flex flex-col items-center mt-7 gap-2 text-[#8692A6]">
-              <p>
-                Forgot your password?
-                <span>
-                  <Link to="/forgotPassword" className="text-primary underline">
-                    Reset Now
-                  </Link>
-                </span>
-              </p>
-              <p>
-                Don't have an account?
-                <span>
-                  <Link to="/signUp" className="text-primary underline">
-                    Sign Up
-                  </Link>
-                </span>
-              </p>
-            </div>
           </form>
+          <div className="flex flex-col items-center mt-7 gap-2 text-[#8692A6]">
+            <p>
+              Forgot your password?
+              <span>
+                <Link to="/forgotPassword" className="text-primary underline">
+                  Reset Now
+                </Link>
+              </span>
+            </p>
+            <p>
+              Don't have an account?
+              <span>
+                <Link to="/signUp" className="text-primary underline">
+                  Sign Up
+                </Link>
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

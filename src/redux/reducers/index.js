@@ -7,7 +7,7 @@ import auth from "./auth";
 const authConfig = {
   key: "auth",
   storage,
-  blacklist: ["message"],
+  blacklist: ["messageRegister", "messageLogin"],
 };
 
 const reducer = combineReducers({

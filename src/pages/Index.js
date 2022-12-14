@@ -18,16 +18,32 @@ import ManageMovie from "./ManageMovie";
 import Dashboard from "./Dashboard";
 import ManageSchedule from "./ManageSchedule";
 import PrivateRoute from "../components/middlewareComp/PrivateRoute";
+import PrivateRouteUpdatePassword from "../components/middlewareComp/PrivateRouteUpdatePassword";
+import PrivateRouteLogin from "../components/middlewareComp/PrivateRouteLogin";
 
 const Index = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signIn" element={<SignIn />} />
+        <Route
+          path="/signIn"
+          element={
+            <PrivateRouteLogin>
+              <SignIn />
+            </PrivateRouteLogin>
+          }
+        />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/updatePassword" element={<UpdatePassword />} />
+        <Route
+          path="/updatePassword"
+          element={
+            <PrivateRouteUpdatePassword>
+              <UpdatePassword />
+            </PrivateRouteUpdatePassword>
+          }
+        />
         <Route path="/viewAll" element={<VIewAll />} />
         <Route path="/movieDetails/:id" element={<MovieDetails />} />
         <Route
@@ -46,7 +62,14 @@ const Index = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/orderHistory"
           element={

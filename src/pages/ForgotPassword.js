@@ -1,18 +1,42 @@
 // @ts-nocheck
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Brand from "../assets/img/brand.png";
 import { useNavigate } from "react-router-dom";
 
 import FormInput from "../components/form/FormInput";
 import FormLabel from "../components/form/FormLabel";
 import ButtonAction from "../components/form/ButtonAction";
+import axios from "axios";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
-  const handlerForgotPassword = () => {
-    navigate("/updatePassword");
+  const sendCodeToEmail = async (email) => {
+    try {
+      const form = new URLSearchParams({
+        email,
+      });
+
+      const { data } = await axios.post(
+        "https://fw12-backend-roan.vercel.app/auth/forgotPassword",
+        form
+      );
+      setMessage(data.message);
+      setTimeout(() => {
+        navigate("/updatePassword", { state: { email } });
+      }, 3000);
+    } catch (error) {
+      const { data } = error.response;
+      setMessage(data.message);
+    }
+  };
+
+  const handlerForgotPassword = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    sendCodeToEmail(email);
   };
 
   return (
@@ -77,6 +101,11 @@ const ForgotPassword = () => {
             <p className="text-[#AAAAAA] text-md mb-9">
               we'll send a link to your email shortly
             </p>
+            {message && (
+              <div className="p-4 bg-green-200 border-2 border-green-300 rounded-xl mb-5 text-center">
+                {message}
+              </div>
+            )}
           </div>
           <form onSubmit={handlerForgotPassword}>
             <div className="flex flex-col">

@@ -6,7 +6,8 @@ import { registerAction } from "../actions/auth";
 
 const initialState = {
   token: null,
-  message: "",
+  messageLogin: "",
+  messageRegister: "",
 };
 
 const authReducer = createSlice({
@@ -16,24 +17,28 @@ const authReducer = createSlice({
     logout: (state, action) => {
       return initialState;
     },
+    clearMessage: (state, action) => {
+      state.messageLogin = "";
+      state.messageRegister = "";
+    },
   },
   extraReducers: (build) => {
     build.addCase(loginAction.fulfilled, (state, { payload }) => {
       state.token = payload;
     });
     build.addCase(loginAction.rejected, (state, action) => {
-      state.message = action.error.message;
+      state.messageLogin = action.error.message;
     });
 
     build.addCase(registerAction.fulfilled, (state, { payload }) => {
       state.token = payload;
     });
     build.addCase(registerAction.rejected, (state, action) => {
-      state.message = action.error.message;
+      state.messageRegister = action.error.message;
     });
   },
 });
 
-export const { logout } = authReducer.actions;
+export const { logout, clearMessage } = authReducer.actions;
 
 export default authReducer.reducer;
