@@ -1,15 +1,13 @@
 // @ts-nocheck
 import { createSlice } from "@reduxjs/toolkit";
-
-// import { loginAction } from "../actions/auth";
-// import { registerAction } from "../actions/auth";
+import { createTransaction } from "../actions/transactions";
 
 const initialState = {
   movieId: "",
   cinemaId: "",
   bookingDate: "",
   bookingTime: "",
-  seatNumber: "",
+  seatNum: "",
   paymentMethodId: "",
   fullName: "",
   email: "",
@@ -26,23 +24,26 @@ const transactionsReducer = createSlice({
       state.bookingDate = action.payload.bookingDate;
       state.bookingTime = action.payload.bookingTime;
     },
+    chooseSeat: (state, action) => {
+      state.seatNum = action.payload.seatNum;
+    },
   },
   extraReducers: (build) => {
-    // build.addCase(loginAction.fulfilled, (state, { payload }) => {
-    //   state.token = payload;
-    // });
-    // build.addCase(loginAction.rejected, (state, action) => {
-    //   state.messageLogin = action.error.message;
-    // });
-    // build.addCase(registerAction.fulfilled, (state, { payload }) => {
-    //   state.token = payload;
-    // });
-    // build.addCase(registerAction.rejected, (state, action) => {
-    //   state.messageRegister = action.error.message;
-    // });
+    build.addCase(createTransaction.fulfilled, (state, { payload }) => {
+      // state.movieId = payload.movieId;
+      // state.cinemaId = payload.cinemaId;
+      // state.bookingDate = payload.bookingDate;
+      // state.bookingTime = payload.bookingTime;
+      // state.seatNum = payload.seatNum;
+      // state.paymentMethodId = payload.paymentMethodId;
+      // state.fullName = payload.fullName;
+      // state.email = payload.email;
+      // state.phoneNumber = payload.phoneNumber;
+      return initialState;
+    });
   },
 });
 
-export const { chooseMovie } = transactionsReducer.actions;
+export const { chooseMovie, chooseSeat } = transactionsReducer.actions;
 
 export default transactionsReducer.reducer;

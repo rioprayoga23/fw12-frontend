@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import logoBCA from "../assets/img/Bank BCA Logo (SVG-240p) - FileVector69 1.png";
 import logoBRI from "../assets/img/Bank BRI (Bank Rakyat Indonesia) Logo (SVG-240p) - FileVector69 1.png";
@@ -17,10 +17,29 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import PaymentMethod from "../components/PaymentMethod";
 import FormLabel from "../components/form/FormLabel";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { createTransaction } from "../redux/actions/transactions";
 
 const Payment = () => {
   const token = useSelector((state) => state.auth.token);
+  const data = useSelector((state) => state.transactions);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    paymentMethodId: 2,
+  });
+
+  const cb = () => {
+    navigate("/ticketResult");
+  };
+
+  const pay = () => {
+    dispatch(createTransaction({ data, form, token, cb }));
+  };
 
   return (
     <Fragment>
@@ -107,12 +126,12 @@ const Payment = () => {
             >
               Prvious step
             </Link>
-            <Link
-              to="/ticketResult"
+            <button
               className="p-3 w-2/6 text-center bg-primary rounded-md text-white font-semibold md:w-full"
+              onClick={pay}
             >
               Pay your order
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -123,7 +142,14 @@ const Payment = () => {
               <FormLabel for="Full Name" />
               <input
                 type="text"
+                name="fullName"
                 className="w-full border border-[#DEDEDE] p-3 mt-2 mb-4 rounded-md focus:outline-none"
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    [e.target.name]: e.target.value,
+                  })
+                }
                 placeholder="Jonas El Rodriguez"
               />
             </div>
@@ -131,8 +157,15 @@ const Payment = () => {
               <FormLabel for="Email" />
               <input
                 type="email"
+                name="email"
                 className="w-full border border-[#DEDEDE] p-3 mt-2 mb-4 rounded-md focus:outline-none"
-                placeholder="Jonas El Rodriguez"
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                placeholder="Jonas@gmail.com"
               />
             </div>
 
@@ -147,8 +180,15 @@ const Payment = () => {
                 <div className="border border-l-[#DEDEDE]"></div>
                 <input
                   type="email"
+                  name="phoneNumber"
                   className="focus:outline-none ml-3 md:w-full lg:w-full"
-                  placeholder="Jonas El Rodriguez"
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                  placeholder="089876456777"
                 />
               </div>
               <div className="flex gap-5 bg-[#F4B7404D] p-4 items-center mt-7 md:p-2">

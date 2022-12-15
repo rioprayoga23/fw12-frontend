@@ -1,14 +1,24 @@
 // @ts-nocheck
 
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Navbar from "../components/Navbar";
 import ebvId from "../assets/img/ebu.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { chooseSeat } from "../redux/reducers/transactions";
 
 const OrderPage = () => {
   const token = useSelector((state) => state.auth.token);
+  const [selectedSeat, setSelectedSeat] = useState("C5");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const checkOut = () => {
+    dispatch(chooseSeat({ seatNum: selectedSeat }));
+    navigate("/payment");
+  };
 
   return (
     <Fragment>
@@ -233,12 +243,12 @@ const OrderPage = () => {
             >
               Change your movie
             </Link>
-            <Link
-              to="/payment"
+            <button
               className="p-3 w-2/6 text-center bg-primary rounded-md text-white font-semibold md:w-full lg:w-full"
+              onClick={checkOut}
             >
               Checkout now
-            </Link>
+            </button>
           </div>
         </div>
         <div className="w-1/3 md:w-full">

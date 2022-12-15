@@ -6,7 +6,7 @@ import ebvId from "../assets/img/ebu.png";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CardMovieDetail from "../components/CardMovieDetail";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -17,17 +17,18 @@ import moment from "moment";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
-  const [movieDetails, setMovieDetails] = useState({});
-  const token = useSelector((state) => state.auth.token);
+  const navigate = useNavigate();
 
+  const token = useSelector((state) => state.auth.token);
   const { id } = useParams();
 
+  const [movieDetails, setMovieDetails] = useState({});
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [cityList, setCityList] = useState([]);
   const [city, setCity] = useState("");
   const [schedule, setSchedule] = useState([]);
-  const [selectedTime, setSelectedTime] = useState(null);
-  const [selectedCinema, setSelectedCinema] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedCinema, setSelectedCinema] = useState(null);
 
   useEffect(() => {
     getMovieDetails(id);
@@ -78,6 +79,7 @@ const MovieDetails = () => {
         bookingTime: selectedTime,
       })
     );
+    navigate("/order");
   };
 
   return (
