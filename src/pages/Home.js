@@ -9,32 +9,44 @@ import BtnMonth from "../components/filter/BtnMonth";
 import { default as CardMovieNowShowing } from "../components/now-showing/CardMovie";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import axios from "axios";
+
 import { useSelector } from "react-redux";
+import http from "../helpers/http";
+
+import SkeletonNowShowing from "../components/SkeletonNowShowing";
+import SkeletonUpcoming from "../components/SkeletonUpcoming";
 
 const Home = () => {
-  const [nowShowing, setNowShowing] = useState({});
-  const [upComing, setUpComing] = useState({});
+  const [nowShowing, setNowShowing] = useState([]);
+  const [upComing, setUpComing] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState("January");
+
+  const [isLoadingNow, setIsLoadingNow] = useState(false);
+  const [isLoadingUp, setIsLoadingUp] = useState(false);
 
   const token = useSelector((state) => state.auth.token);
 
   const getNowShowing = async () => {
-    const { data } = await axios.get(
-      "https://fw12-backend-roan.vercel.app/movies/now?limit=7"
-    );
-    setNowShowing(data);
-  };
-
-  const getUpComing = async () => {
-    const { data } = await axios.get(
-      "https://fw12-backend-roan.vercel.app/movies/upcoming?limit=7"
-    );
-    setUpComing(data);
+    setIsLoadingNow(true);
+    const { data } = await http().get("/movies/now?limit=8");
+    setNowShowing(data.results);
+    setIsLoadingNow(false);
   };
 
   useEffect(() => {
-    getNowShowing();
+    const getUpComing = async () => {
+      setIsLoadingUp(true);
+      const { data } = await http().get(
+        `/movies/upcoming?month=${selectedMonth}&limit=7`
+      );
+      setUpComing(data.results);
+      setIsLoadingUp(false);
+    };
     getUpComing();
+  }, [selectedMonth]);
+
+  useEffect(() => {
+    getNowShowing();
   }, []);
 
   return (
@@ -66,9 +78,27 @@ const Home = () => {
               <Link to="/viewAll">View All</Link>
             </div>
           </div>
-          <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
-            <CardMovieNowShowing data={nowShowing} />
-          </div>
+          {isLoadingNow ? (
+            <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
+              <SkeletonNowShowing />
+              <SkeletonNowShowing />
+              <SkeletonNowShowing />
+              <SkeletonNowShowing />
+              <SkeletonNowShowing />
+              <SkeletonNowShowing />
+            </div>
+          ) : (
+            <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
+              {nowShowing?.map((movie) => (
+                <div
+                  className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-white rounded-lg hover:bg-white hover:border-primary cursor-pointer"
+                  key={movie.id}
+                >
+                  <CardMovieNowShowing data={movie} />
+                </div>
+              ))}
+            </div>
+          )}
         </section>
         <section className="py-32 bg-white md:py-24">
           <div className="px-24 flex justify-between md:px-5 lg:px-10">
@@ -79,23 +109,101 @@ const Home = () => {
               <Link to="/viewAll">View All</Link>
             </div>
           </div>
-          <div className="ml-24 flex mt-5 overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
-            <BtnMonth status={"active"} month={"September"} />
-            <BtnMonth month={"October"} />
-            <BtnMonth month={"November"} />
-            <BtnMonth month={"December"} />
-            <BtnMonth month={"January"} />
-            <BtnMonth month={"February"} />
-            <BtnMonth month={"March"} />
-            <BtnMonth month={"April"} />
-            <BtnMonth month={"May"} />
-            <BtnMonth month={"June"} />
-            <BtnMonth month={"July"} />
-            <BtnMonth month={"August"} />
+          <div className="ml-24 flex mt-5 overflow-x-scroll no-scrollbar md:ml-5 lg:ml-10">
+            <div onClick={() => setSelectedMonth("January")}>
+              <BtnMonth
+                month={"January"}
+                status={selectedMonth === "January" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("February")}>
+              <BtnMonth
+                month={"February"}
+                status={selectedMonth === "February" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("March")}>
+              <BtnMonth
+                month={"March"}
+                status={selectedMonth === "March" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("April")}>
+              <BtnMonth
+                month={"April"}
+                status={selectedMonth === "April" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("Mei")}>
+              <BtnMonth
+                month={"Mei"}
+                status={selectedMonth === "Mei" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("June")}>
+              <BtnMonth
+                month={"June"}
+                status={selectedMonth === "June" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("July")}>
+              <BtnMonth
+                month={"July"}
+                status={selectedMonth === "July" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("August")}>
+              <BtnMonth
+                month={"August"}
+                status={selectedMonth === "August" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("September")}>
+              <BtnMonth
+                month={"September"}
+                status={selectedMonth === "September" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("October")}>
+              <BtnMonth
+                month={"October"}
+                status={selectedMonth === "October" ? "active" : ""}
+              />
+            </div>
+            <div onClick={() => setSelectedMonth("December")}>
+              <BtnMonth
+                month={"December"}
+                status={selectedMonth === "December" ? "active" : ""}
+              />
+            </div>
           </div>
-          <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
-            <CardMovie data={upComing} />
-          </div>
+          {isLoadingUp ? (
+            <div className="ml-24 mt-10 flex overflow-x-scroll no-scrollbar md:ml-5 lg:ml-10">
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+            </div>
+          ) : (
+            <div className="ml-24 mt-10 flex overflow-x-scroll no-scrollbar md:ml-0 lg:ml-10">
+              {upComing.length < 1 ? (
+                <div className="justify-center text-center w-full mr-24 md:mr-0 lg:mr-0 text-xl md:ml-0">
+                  Oopss, movie not found
+                </div>
+              ) : (
+                upComing.map((movie) => (
+                  <div
+                    className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:p-2 md:ml-5 flex flex-col items-center justify-center lg:w-48 md:m-2"
+                    key={movie.id}
+                  >
+                    <CardMovie data={movie} />
+                  </div>
+                ))
+              )}
+            </div>
+          )}
         </section>
         <section className="px-24 font-Mulish pb-20 md:px-5 lg:px-10">
           <div className="w-full shadow-xl text-center py-12 rounded-md md:p-5 md:flex md:flex-col md:items-center">

@@ -8,7 +8,7 @@ import transactions from "./transactions";
 const authConfig = {
   key: "auth",
   storage,
-  blacklist: ["messageRegister", "messageLogin"],
+  blacklist: ["message"],
 };
 
 const reducer = combineReducers({

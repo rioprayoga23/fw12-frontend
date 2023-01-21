@@ -1,48 +1,40 @@
 // @ts-nocheck
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import http from "../../helpers/http";
 
 export const loginAction = createAsyncThunk(
   "auth/loginAsync",
-  async ({ email, password, cb }) => {
+  async ({ value, cb }) => {
     try {
       const form = new URLSearchParams({
-        email,
-        password,
+        email: value.email,
+        password: value.password,
       });
-
-      const { data } = await axios.post(
-        "https://fw12-backend-roan.vercel.app/auth/login",
-        form
-      );
+      const { data } = await http().post("/auth/login", form);
       cb();
-      return data.results.token;
+      return data.results;
     } catch (err) {
-      throw err.response.data.message;
+      throw err.response.data;
     }
   }
 );
 
 export const registerAction = createAsyncThunk(
   "auth/registerAsync",
-  async ({ firstName, lastName, phoneNumber, email, password, cb }) => {
+  async ({ value, cb }) => {
     try {
       const form = new URLSearchParams({
-        firstName,
-        lastName,
-        phoneNumber,
-        email,
-        password,
+        firstName: value.firstName,
+        lastName: value.lastName,
+        phoneNumber: value.phoneNumber,
+        email: value.email,
+        password: value.password,
       });
-
-      const { data } = await axios.post(
-        "https://fw12-backend-roan.vercel.app/auth/register",
-        form
-      );
+      const { data } = await http().post("/auth/register", form);
       cb();
-      return data.results.token;
+      return data.results;
     } catch (err) {
-      throw err.response.data.message;
+      throw err.response.data;
     }
   }
 );

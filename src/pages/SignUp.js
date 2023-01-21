@@ -1,48 +1,63 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import brand from "../assets/img/brand.png";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import FormInput from "../components/form/FormInput";
-import FormInputPassword from "../components/form/FormInputPassword";
 import FormLabel from "../components/form/FormLabel";
-import ButtonAction from "../components/form/ButtonAction";
 import { useDispatch, useSelector } from "react-redux";
 import { registerAction } from "../redux/actions/auth";
-import { clearMessage } from "../redux/reducers/auth";
+
+import { Eye, EyeOff } from "react-feather";
+
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import YupPassword from "yup-password";
+YupPassword(Yup); // extend yup
+
+const signUpSchema = Yup.object().shape({
+  firstName: Yup.string().required("Required"),
+  lastName: Yup.string().required("Required"),
+  phoneNumber: Yup.string()
+    .min(10, "Min numbers is 10")
+    .max(13, "Max numbers is 13")
+    .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .password()
+    .min(6, "Min length 6")
+    .minLowercase(1, "Min Lowecase 1")
+    .minUppercase(1, "Min Uppercase 1")
+    .minSymbols(1, "Min Symbols 1")
+    .minNumbers(1, "Min Numbers 1")
+    .required("Required"),
+});
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [typeInput, setTypeInput] = useState("password");
+
+  const { isLoading } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const [loading, setLoading] = useState(false);
 
-  const message = useSelector((state) => state.auth.messageRegister);
+  const handlerShowPassword = () => {
+    if (showPassword === false) {
+      setShowPassword(true);
+      setTypeInput("text");
+    } else {
+      setShowPassword(false);
+      setTypeInput("password");
+    }
+  };
 
-  // forLoading
-  // useEffect(() => {
-  //   if (message !== "") {
-  //     setLoading(false);
-  //   }
-  // }, [message]);
+  const cb = () => {
+    navigate("/");
+  };
 
-  const handlerSignUp = (event) => {
-    event.preventDefault();
-    // setLoading(true);
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
-    const phoneNumber = event.target.phoneNumber.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-
-    const cb = () => {
-      navigate("/");
-      // setLoading(false);
-      dispatch(clearMessage());
-    };
-
-    dispatch(
-      registerAction({ firstName, lastName, phoneNumber, email, password, cb })
-    );
+  const doSignUp = (value) => {
+    dispatch(registerAction({ value, cb }));
   };
 
   return (
@@ -68,50 +83,151 @@ const SignUp = () => {
               </div>
             )}
           </div>
-          <form onSubmit={handlerSignUp}>
-            <div className="flex flex-col">
-              <FormLabel for={"firstName"} name="First Name" />
-              <FormInput
-                id={"firstName"}
-                type={"text"}
-                name={"firstName"}
-                placeholder={"Write your first name"}
-              />
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              phoneNumber: "",
+              email: "",
+              password: "",
+            }}
+            validationSchema={signUpSchema}
+            onSubmit={doSignUp}
+          >
+            {({ errors, touched, dirty }) => (
+              <Form>
+                <div className="flex flex-col">
+                  <FormLabel for={"firstName"} name="First Name" />
+                  <div className="mb-4">
+                    <Field
+                      type="text"
+                      name="firstName"
+                      placeholder="Write Your First Name"
+                      className={`border-2 p-4 rounded-2xl focus:outline-none w-full ${
+                        errors.firstName &&
+                        touched.firstName &&
+                        "border-red-500"
+                      } ${
+                        !errors.firstName &&
+                        touched.firstName &&
+                        "border-primary"
+                      }`}
+                    />
+                    {errors.firstName && touched.firstName && (
+                      <label className="label">
+                        <span className="label-text-alt text-red-500">
+                          {errors.firstName}
+                        </span>
+                      </label>
+                    )}
+                  </div>
+                  <FormLabel for={"lastName"} name="Last Name" />
+                  <div className="mb-4">
+                    <Field
+                      type="text"
+                      name="lastName"
+                      placeholder="Write Your Last Name"
+                      className={`border-2 p-4 rounded-2xl focus:outline-none w-full ${
+                        errors.lastName && touched.lastName && "border-red-500"
+                      } ${
+                        !errors.lastName && touched.lastName && "border-primary"
+                      }`}
+                    />
+                    {errors.lastName && touched.lastName && (
+                      <label className="label">
+                        <span className="label-text-alt text-red-500">
+                          {errors.lastName}
+                        </span>
+                      </label>
+                    )}
+                  </div>
+                  <FormLabel for={"phoneNumber"} name="Phone Number" />
+                  <div className="mb-4">
+                    <Field
+                      type="text"
+                      name="phoneNumber"
+                      placeholder="Write Your Phone Number"
+                      className={`border-2 p-4 rounded-2xl focus:outline-none w-full ${
+                        errors.phoneNumber &&
+                        touched.phoneNumber &&
+                        "border-red-500"
+                      } ${
+                        !errors.phoneNumber &&
+                        touched.phoneNumber &&
+                        "border-primary"
+                      }`}
+                    />
+                    {errors.phoneNumber && touched.phoneNumber && (
+                      <label className="label">
+                        <span className="label-text-alt text-red-500">
+                          {errors.phoneNumber}
+                        </span>
+                      </label>
+                    )}
+                  </div>
+                  <FormLabel for={"email"} name="Email" />
+                  <div className="mb-4">
+                    <Field
+                      type="text"
+                      name="email"
+                      placeholder="Write Your Email"
+                      className={`border-2 p-4 rounded-2xl focus:outline-none w-full ${
+                        errors.email && touched.email && "border-red-500"
+                      } ${!errors.email && touched.email && "border-primary"}`}
+                    />
+                    {errors.email && touched.email && (
+                      <label className="label">
+                        <span className="label-text-alt text-red-500">
+                          {errors.email}
+                        </span>
+                      </label>
+                    )}
+                  </div>
 
-              <FormLabel for={"lastName"} name="Last Name" />
-              <FormInput
-                id={"lastName"}
-                type={"text"}
-                name={"lastName"}
-                placeholder={"Write your last name"}
-              />
-
-              <FormLabel for={"phoneNumber"} name="Phone Number" />
-              <FormInput
-                id={"phoneNumber"}
-                type={"text"}
-                name={"phoneNumber"}
-                placeholder={"Write your phone number"}
-              />
-
-              <FormLabel for={"email"} name="Email" />
-              <FormInput
-                id={"email"}
-                type={"email"}
-                name={"email"}
-                placeholder={"Write your email"}
-              />
-
-              <FormLabel for={"Password"} name="Password" />
-              <FormInputPassword
-                id={"password"}
-                type={"password"}
-                name={"password"}
-                placeholder={"Write your password"}
-              />
-            </div>
-            <ButtonAction name={"Sign Up"} />
-          </form>
+                  <FormLabel for={"password"} name="Password" />
+                  <div className="mb-4 relative">
+                    <Field
+                      type={typeInput}
+                      name="password"
+                      placeholder="Write your password"
+                      className={`border-2 p-4 rounded-2xl w-full focus:outline-none ${
+                        errors.password && touched.password && "border-red-500"
+                      } ${
+                        !errors.password && touched.password && "border-primary"
+                      }`}
+                    />
+                    {showPassword ? (
+                      <Eye
+                        className="absolute right-4 top-5 cursor-pointer"
+                        onClick={handlerShowPassword}
+                      />
+                    ) : (
+                      <EyeOff
+                        className="absolute right-4 top-5 cursor-pointer"
+                        onClick={handlerShowPassword}
+                      />
+                    )}
+                    {errors.password && touched.password && (
+                      <label className="label">
+                        <span className="label-text-alt text-red-500">
+                          {errors.password}
+                        </span>
+                      </label>
+                    )}
+                  </div>
+                </div>
+                <button
+                  disabled={!dirty || isLoading}
+                  type="submit"
+                  className={`bg-primary w-full p-4 mt-4 rounded-2xl text-white font-Mulish font-semibold btn btn-success border-primary shadow-md ${
+                    isLoading && "loading"
+                  }`}
+                >
+                  Sign Up
+                </button>
+              </Form>
+            )}
+          </Formik>
 
           <div className="flex flex-col items-center mt-7 gap-2">
             <p className="text-[#8692A6]">

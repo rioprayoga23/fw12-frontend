@@ -1,42 +1,45 @@
 // @ts-nocheck
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Brand from "../assets/img/brand.png";
 import { useNavigate } from "react-router-dom";
 
-import FormInput from "../components/form/FormInput";
 import FormLabel from "../components/form/FormLabel";
-import ButtonAction from "../components/form/ButtonAction";
-import axios from "axios";
+
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import http from "../helpers/http";
+
+const forgotSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+});
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const sendCodeToEmail = async (email) => {
+  const sendCodeToEmail = async (value) => {
     try {
       const form = new URLSearchParams({
-        email,
+        email: value.email,
       });
-
-      const { data } = await axios.post(
-        "https://fw12-backend-roan.vercel.app/auth/forgotPassword",
-        form
-      );
+      setIsLoading(true);
+      const { data } = await http().post("/auth/forgotPassword", form);
       setMessage(data.message);
+      setIsLoading(false);
       setTimeout(() => {
-        navigate("/updatePassword", { state: { email } });
-      }, 3000);
+        navigate("/updatePassword", { state: { email: value.email } });
+        setMessage("");
+      }, 2000);
     } catch (error) {
       const { data } = error.response;
       setMessage(data.message);
     }
   };
 
-  const handlerForgotPassword = (event) => {
-    event.preventDefault();
-    const email = event.target.email.value;
-    sendCodeToEmail(email);
+  const doForgotPassword = (value) => {
+    sendCodeToEmail(value);
   };
 
   return (
@@ -107,18 +110,47 @@ const ForgotPassword = () => {
               </div>
             )}
           </div>
-          <form onSubmit={handlerForgotPassword}>
-            <div className="flex flex-col">
-              <FormLabel for={"email"} name="Email" />
-              <FormInput
-                id={"email"}
-                type={"email"}
-                name={"email"}
-                placeholder={"Write your email"}
-              />
-            </div>
-            <ButtonAction name={"Send"} />
-          </form>
+          <Formik
+            initialValues={{
+              email: "",
+            }}
+            validationSchema={forgotSchema}
+            onSubmit={doForgotPassword}
+          >
+            {({ errors, touched, dirty }) => (
+              <Form>
+                <div className="flex flex-col">
+                  <FormLabel for={"email"} name="Email" />
+                  <div className="mb-4">
+                    <Field
+                      type="text"
+                      name="email"
+                      placeholder="Write Your Email"
+                      className={`border-2 p-4 rounded-2xl focus:outline-none w-full ${
+                        errors.email && touched.email && "border-red-500"
+                      } ${!errors.email && touched.email && "border-primary"}`}
+                    />
+                    {errors.email && touched.email && (
+                      <label className="label">
+                        <span className="label-text-alt text-red-500">
+                          {errors.email}
+                        </span>
+                      </label>
+                    )}
+                  </div>
+                </div>
+                <button
+                  disabled={!dirty || isLoading}
+                  type="submit"
+                  className={`bg-primary w-full p-4 mt-4 rounded-2xl text-white font-Mulish font-semibold btn btn-success border-primary shadow-md ${
+                    isLoading && "loading"
+                  }`}
+                >
+                  Send
+                </button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>
