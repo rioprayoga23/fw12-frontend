@@ -18,8 +18,9 @@ import ManageMovie from "./ManageMovie";
 import Dashboard from "./Dashboard";
 import ManageSchedule from "./ManageSchedule";
 import PrivateRoute from "../components/middlewareComp/PrivateRoute";
-import PrivateRouteUpdatePassword from "../components/middlewareComp/PrivateRouteUpdatePassword";
+import PrivateRouteUpdatePassword from "../components/middlewareComp/PrivateRouteTicketResult";
 import PrivateRouteLogin from "../components/middlewareComp/PrivateRouteLogin";
+import PrivateRouteTicketResult from "../components/middlewareComp/PrivateRouteTicketResult";
 
 const Index = () => {
   return (
@@ -82,7 +83,9 @@ const Index = () => {
           path="/ticketResult"
           element={
             <PrivateRoute>
-              <TicketResult />
+              <PrivateRouteTicketResult>
+                <TicketResult />
+              </PrivateRouteTicketResult>
             </PrivateRoute>
           }
         />
@@ -90,7 +93,9 @@ const Index = () => {
           path="/ticketResultUsed"
           element={
             <PrivateRoute>
-              <TicketResultUsed />
+              <PrivateRouteTicketResult>
+                <TicketResultUsed />
+              </PrivateRouteTicketResult>
             </PrivateRoute>
           }
         />
@@ -98,7 +103,9 @@ const Index = () => {
           path="/ticketResultExpired"
           element={
             <PrivateRoute>
-              <TicketResultExpired />
+              <PrivateRouteTicketResult>
+                <TicketResultExpired />
+              </PrivateRouteTicketResult>
             </PrivateRoute>
           }
         />
