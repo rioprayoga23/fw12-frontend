@@ -2,32 +2,46 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
-import { ChevronDown } from "react-feather";
-import BtnMonth from "../components/filter/BtnMonth";
+
+import { ChevronDown, Search } from "react-feather";
 import CardMovie from "../components/CardMovie";
-import axios from "axios";
 import Pagination from "../components/now-showing/Pagination";
-import { useSelector } from "react-redux";
+
+import http from "../helpers/http";
+import SkeletonUpcoming from "../components/SkeletonUpcoming";
 
 const VIewAll = () => {
-  const [allMovies, setAllMovies] = useState({});
-  const token = useSelector((state) => state.auth.token);
+  const [dataAllMovies, setDataAllMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [sort, setSort] = useState("DESC");
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
-  const getAllMovies = async () => {
-    const { data } = await axios.get(
-      "https://fw12-backend-roan.vercel.app/movies?limit=8"
-    );
-    setAllMovies(data);
+  const doSearch = (e) => {
+    e.preventDefault();
+    const value = e.target.search.value;
+    setSearch(value);
   };
 
   useEffect(() => {
+    const getAllMovies = async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await http().get(
+          `/movies?limit=8&sort=${sort}&search=${search}&page=${page}`
+        );
+        setDataAllMovies(data.results);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     getAllMovies();
-  }, []);
+  }, [sort, page, search]);
 
   return (
     <Fragment>
-      <Navbar login={token} />
+      <Navbar />
 
       <div className="bg-secondary pb-10">
         <div className="flex items-center px-24 pt-10 pb-7 md:px-5 lg:px-10 md:flex-col md:items-start">
@@ -41,7 +55,7 @@ const VIewAll = () => {
                 tabIndex={0}
                 className="border-2 border-[#DEDEDE] bg-white py-2 px-2 w-28 rounded-xl m-1 cursor-pointer flex justify-center items-center md:m-0 md:w-full"
               >
-                <span className="flex-1">Sort</span>
+                <span className="flex-1">{sort}</span>
                 <div>
                   <ChevronDown />
                 </div>
@@ -50,24 +64,35 @@ const VIewAll = () => {
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <Link to="/viewAll">Popular</Link>
+                <li onClick={() => setSort("DESC")}>
+                  <div>DESC</div>
                 </li>
-                <li>
-                  <Link to="/viewAll">Z-A</Link>
+                <li onClick={() => setSort("ASC")}>
+                  <div>ASC</div>
                 </li>
               </ul>
             </div>
-            <div className="md:w-full">
-              <input
-                type="text"
-                className="border-2 border-[#DEDEDE] p-2 w-72 rounded-xl md:w-full"
-                placeholder="Search Movie Name ..."
-              />
-            </div>
+            <form onSubmit={doSearch}>
+              <div className="flex gap-1 md:w-full cursor-pointer">
+                <input
+                  disabled={isLoading}
+                  type="text"
+                  name="search"
+                  className="border-2 border-[#DEDEDE] p-2 w-72 rounded-xl md:w-full"
+                  placeholder="Search Movie Name ..."
+                />
+                <button
+                  disabled={isLoading}
+                  onSubmit={doSearch}
+                  className={`btn border-2 bg-primary hover:bg-success p-2 border-primary hover:border-primary rounded-xl md:w-full`}
+                >
+                  <Search />
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-        <div className="flex ml-24 overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
+        {/* <div className="flex ml-24 overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
           <BtnMonth status={"active"} month={"September"} />
           <BtnMonth month={"October"} />
           <BtnMonth month={"November"} />
@@ -80,10 +105,30 @@ const VIewAll = () => {
           <BtnMonth month={"June"} />
           <BtnMonth month={"July"} />
           <BtnMonth month={"August"} />
-        </div>
+        </div> */}
 
         <div className="mx-24 mt-10 gap-5 py-10 flex flex-wrap bg-white justify-center md:mx-0 md:justify-center md:gap-3 lg:mx-10">
-          <CardMovie data={allMovies} />
+          {isLoading ? (
+            <>
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+              <SkeletonUpcoming />
+            </>
+          ) : (
+            dataAllMovies?.map((item) => (
+              <div
+                className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:p-2 md:ml-5 flex flex-col items-center justify-center lg:w-48 md:m-2"
+                key={item.id}
+              >
+                <CardMovie data={item} />
+              </div>
+            ))
+          )}
         </div>
         <Pagination />
       </div>
