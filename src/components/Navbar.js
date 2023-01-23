@@ -9,17 +9,30 @@ import { clearProfileAction } from "../redux/reducers/profile";
 
 import brandNav from "../assets/img/brand-small.png";
 import profileImg from "../assets/img/profile-blank.png";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
   const { picture } = useSelector((state) => state.profile);
 
-  const handlerLogout = () => {
-    dispatch(logoutAction());
-    dispatch(clearProfileAction());
-    navigate("/signIn");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const MySwal = withReactContent(Swal);
+
+  const handlerLogout = async () => {
+    const alert = await MySwal.fire({
+      title: <div className="text-red-500">Log out</div>,
+      html: "Are you sure you want log out?",
+      icon: "warning",
+      confirmButtonText: "Yes",
+      showCancelButton: true,
+    });
+    if (alert.isConfirmed) {
+      dispatch(logoutAction());
+      dispatch(clearProfileAction());
+      navigate("/signIn");
+    }
   };
 
   useEffect(() => {
@@ -92,7 +105,7 @@ const Navbar = () => {
           tabIndex={0}
           className="dropdown-content p-2 shadow bg-base-100 rounded-box w-[270px]"
         >
-          <li className="list-none flex-1 ml-20 md:ml-0 md:flex-col md:flex md:gap-4">
+          <li className="list-none flex-1 ml-20 md:ml-0 md:flex-col md:flex md:gap-4 p-3">
             <Link to="/" className="px-7 md:px-0">
               Home
             </Link>
@@ -107,7 +120,7 @@ const Navbar = () => {
                   Profile
                 </Link>
 
-                <div className="w-full mt-5">
+                {/* <div className="w-full mt-5">
                   <div className="form-control">
                     <div className="input-group">
                       <input
@@ -120,12 +133,12 @@ const Navbar = () => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-center gap-10 md:hidden">
-                  <div>
+                  {/* <div>
                     <Search />
-                  </div>
+                  </div> */}
                   <div className="dropdown dropdown-end">
                     <img
                       src={profileImg}
