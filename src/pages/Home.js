@@ -51,7 +51,7 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar login={token} />
+      <Navbar />
       <header className="flex items-center px-24 mt-10 pb-20 md:px-5 md:flex-col md:items-start lg:px-10">
         <section className="font-Mulish flex-1">
           <p className="text-xl text-[#A0A3BD] mb-5 md:text-md md:mb-1 md:text-base">
