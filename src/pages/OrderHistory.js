@@ -7,7 +7,6 @@ import http from "../helpers/http";
 import Navbar from "../components/Navbar";
 
 import Footer from "../components/Footer";
-import ebvId from "../assets/img/ebu.png";
 import profileImg from "../assets/img/profile-blank.png";
 
 import withReactContent from "sweetalert2-react-content";
@@ -123,7 +122,7 @@ const OrderHistory = () => {
     <Fragment>
       <Navbar />
 
-      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col">
+      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col lg:px-10">
         <div className="w-1/4 md:w-full lg:w-1/3">
           <div className="bg-white rounded-md mt-10">
             <div className="p-8">
@@ -182,7 +181,7 @@ const OrderHistory = () => {
             </div>
           </div>
         </div>
-        <div className="w-3/4 md:w-full">
+        <div className="w-3/4 md:w-ful lg:w-2/3">
           <div className="mt-10 mb-9">
             <div className="bg-white p-7 items-center rounded-md md:flex md:flex-col md:gap-3">
               <Link to="/profile" className="font-semibold mr-10 md:mr-0">
@@ -204,7 +203,9 @@ const OrderHistory = () => {
                   <div className="flex-1 mb-5 md:text-center">
                     <h5 className="text-[#AAAAAA] text-sm mb-2">
                       {item.bookingDate} -{" "}
-                      {new Date(item.bookingTime).toLocaleString("en-US", {
+                      {new Date(
+                        `2023-03-03 ${item.bookingTime}`
+                      ).toLocaleString("en-US", {
                         hour: "numeric",
                         minute: "numeric",
                         hour12: true,
@@ -213,12 +214,37 @@ const OrderHistory = () => {
                     <h3 className="text-2xl font-semibold">{item.title}</h3>
                   </div>
                   <div>
-                    <img src={ebvId} alt="" />
+                    <img src={item.picture} alt="" />
                   </div>
                 </div>
                 <div className="border border-b mb-5"></div>
                 <div className="flex justify-between items-center md:flex-col md:gap-4">
-                  {new Date(item.bookingDate) < new Date() ? (
+                  {new Date(item.bookingDateOri).getFullYear() +
+                    new Date(item.bookingDateOri).getMonth() +
+                    new Date(item.bookingDateOri).getDate() ===
+                  new Date().getFullYear() +
+                    new Date().getMonth() +
+                    new Date().getDate() ? (
+                    <>
+                      <div className="w-48 bg-[#00BA88] text-center p-2 rounded-md text-white md:w-full">
+                        Ticket in active
+                      </div>
+                      <div
+                        className="text-[#AAAAAA] cursor-pointer"
+                        onClick={() =>
+                          navigate("/ticketResult", {
+                            state: { trxId: item.id },
+                          })
+                        }
+                      >
+                        See Details
+                      </div>
+                      {/* <Link
+                        to={`/ticketResult/${item.id}`}
+                        className="text-[#AAAAAA]"
+                      ></Link> */}
+                    </>
+                  ) : (
                     <>
                       <div className="w-48 bg-red-500 text-center p-2 rounded-md text-white md:w-full">
                         Ticket Expired
@@ -239,26 +265,6 @@ const OrderHistory = () => {
                       >
                         See Details
                       </Link> */}
-                    </>
-                  ) : (
-                    <>
-                      <div className="w-48 bg-[#00BA88] text-center p-2 rounded-md text-white md:w-full">
-                        Ticket in active
-                      </div>
-                      <div
-                        className="text-[#AAAAAA] cursor-pointer"
-                        onClick={() =>
-                          navigate("/ticketResult", {
-                            state: { trxId: item.id },
-                          })
-                        }
-                      >
-                        See Details
-                      </div>
-                      {/* <Link
-                        to={`/ticketResult/${item.id}`}
-                        className="text-[#AAAAAA]"
-                      ></Link> */}
                     </>
                   )}
                 </div>

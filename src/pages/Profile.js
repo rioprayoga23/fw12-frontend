@@ -19,11 +19,12 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Eye, EyeOff, Edit } from "react-feather";
 
+import { clearProfileAction } from "../redux/reducers/profile";
+import Spinner from "../components/Spinner";
+
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import YupPassword from "yup-password";
-import { clearProfileAction } from "../redux/reducers/profile";
-import Spinner from "../components/Spinner";
 YupPassword(Yup); // extend yup
 
 const detailAccountSchema = Yup.object().shape({
@@ -258,7 +259,7 @@ const Profile = () => {
                     <img
                       src={profileImg}
                       alt=""
-                      className="rounded-full w-32 h-32 bg-contain"
+                      className="rounded-full w-32 h-32 lg:w-28 lg:h-28 bg-contain"
                     />
                   )}
                   {isLoadingPicture && (

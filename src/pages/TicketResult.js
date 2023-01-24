@@ -79,14 +79,13 @@ const TicketResult = (props) => {
                     <div className="flex-1">
                       <p className="text-[#AAAAAA]">Time</p>
                       <h3 className="font-semibold">
-                        {new Date(dataTicket.bookingTime).toLocaleString(
-                          "en-US",
-                          {
-                            hour: "numeric",
-                            minute: "numeric",
-                            hour12: true,
-                          }
-                        )}
+                        {new Date(
+                          `2023-03-03 ${dataTicket.bookingTime}`
+                        ).toLocaleString("en-US", {
+                          hour: "numeric",
+                          minute: "numeric",
+                          hour12: true,
+                        })}
                       </h3>
                     </div>
                     <div className="flex-1">

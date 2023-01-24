@@ -56,9 +56,6 @@ const Navbar = () => {
 
       {token ? (
         <div className="flex items-center gap-10 md:hidden">
-          <div>
-            <Search />
-          </div>
           <div className="dropdown dropdown-end">
             {picture ? (
               <div className="avatar cursor-pointer">
@@ -89,11 +86,18 @@ const Navbar = () => {
           </div>
         </div>
       ) : (
-        <Link to={"/signUp"} className="md:px-0 md:hidden">
-          <div className="bg-primary py-2 px-7 rounded-md text-white cursor-pointer text-sm md:w-full md:text-center">
-            Sign Up
-          </div>
-        </Link>
+        <div className="flex gap-2">
+          <Link to={"/signIn"} className="md:px-0 md:hidden">
+            <div className="bg-white border-2 border-emerald-600 py-2 px-7 rounded-md text-primary cursor-pointer text-sm md:w-full md:text-center">
+              Sign In
+            </div>
+          </Link>
+          <Link to={"/signUp"} className="md:px-0 md:hidden">
+            <div className="bg-primary border-2 border-primary py-2 px-7 rounded-md text-white cursor-pointer text-sm md:w-full md:text-center">
+              Sign Up
+            </div>
+          </Link>
+        </div>
       )}
 
       {/* DROPDOWN MOBILE */}

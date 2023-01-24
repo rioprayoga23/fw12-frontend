@@ -1,16 +1,8 @@
 // @ts-nocheck
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import logoBCA from "../assets/img/Bank BCA Logo (SVG-240p) - FileVector69 1.png";
-import logoBRI from "../assets/img/Bank BRI (Bank Rakyat Indonesia) Logo (SVG-240p) - FileVector69 1.png";
-import logoDana from "../assets/img/Logo DANA (PNG-240p) - FileVector69 1.png";
-import logoGoPay from "../assets/img/Logo GoPay (SVG-240p) - FileVector69 1.png";
-import logoGooglePay from "../assets/img/logos_google-pay.png";
-import logoPaypal from "../assets/img/logos_paypal.png";
-import logoVisa from "../assets/img/logos_visa.png";
-import logoOvo from "../assets/img/Vector.png";
 import logoWarning from "../assets/img/warning.png";
 
 import Navbar from "../components/Navbar";
@@ -18,32 +10,94 @@ import Footer from "../components/Footer";
 import PaymentMethod from "../components/PaymentMethod";
 import FormLabel from "../components/form/FormLabel";
 import { useSelector, useDispatch } from "react-redux";
-import { createTransaction } from "../redux/actions/transactions";
+import http from "../helpers/http";
+import Spinner from "../components/Spinner";
+import { transactionAction } from "../redux/actions/transactions";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 
 const Payment = () => {
-  const token = useSelector((state) => state.auth.token);
-  const data = useSelector((state) => state.transactions);
+  const { total } = useSelector((state) => state.transactions);
+  const { bookingDate } = useSelector((state) => state.transactions);
+  const { movieId } = useSelector((state) => state.transactions);
+  const { title } = useSelector((state) => state.transactions);
+  const { cinemaId } = useSelector((state) => state.transactions);
+  const { cinemaName } = useSelector((state) => state.transactions);
+  const { bookingTime } = useSelector((state) => state.transactions);
+  const { seatNum } = useSelector((state) => state.transactions);
+  const { isLoadingBtn } = useSelector((state) => state.transactions);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [dataPaymentMethod, setDataPaymentMethods] = useState([]);
+  const [selectedPayment, setSelectedPayment] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const MySwal = withReactContent(Swal);
 
   const [form, setForm] = useState({
     fullName: "",
     email: "",
     phoneNumber: "",
-    paymentMethodId: 2,
   });
 
-  const cb = () => {
-    navigate("/ticketResult");
+  const cb = async () => {
+    const alert = await MySwal.fire({
+      title: <div className="text-green-500">Your order is success</div>,
+      html: "You can check your ticket in order history page",
+      icon: "success",
+      confirmButtonText: "Oke",
+    });
+    if (alert.isConfirmed) {
+      navigate("/orderHistory");
+    }
+    if (alert.dismiss) {
+      navigate("/orderHistory");
+    }
   };
 
   const pay = () => {
-    dispatch(createTransaction({ data, form, token, cb }));
+    if (selectedPayment) {
+      const dataTrx = {
+        bookingDate,
+        movieId,
+        cinemaId,
+        email: form.email,
+        fullName: form.fullName,
+        paymentMethodId: selectedPayment,
+        phoneNumber: form.phoneNumber,
+        seatNum: seatNum,
+        total,
+        bookingTime,
+      };
+
+      dispatch(transactionAction({ dataTrx, cb }));
+    } else {
+      MySwal.fire({
+        title: <div className="text-red-500">Please choose payment method</div>,
+        icon: "warning",
+      });
+    }
   };
+
+  const getPaymentMethod = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await http().get("/paymentMethod");
+      setIsLoading(false);
+      setDataPaymentMethods(data.results);
+    } catch (error) {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getPaymentMethod();
+  }, []);
 
   return (
     <Fragment>
-      <Navbar login={token} />
+      <Navbar />
       <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 lg:px-10 md:flex-col-reverse">
         <div className="w-2/3 md:w-full">
           <div>
@@ -53,7 +107,15 @@ const Payment = () => {
                 <div className="flex justify-between">
                   <div className="text-[#6B6B6B] text-lg">Date & time</div>
                   <div className="font-semibold text-lg text-right">
-                    Tuesday, 07 July 2020 at 02:00
+                    {bookingDate} at{" "}
+                    {new Date(`2023-01-01 ${bookingTime}`).toLocaleString(
+                      "en-US",
+                      {
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true,
+                      }
+                    )}
                   </div>
                 </div>
                 <div className="border border-[#E6E6E6] w-full mt-4"></div>
@@ -63,7 +125,7 @@ const Payment = () => {
                 <div className="flex justify-between">
                   <div className="text-[#6B6B6B] text-lg">Movie title</div>
                   <div className="font-semibold text-lg text-right">
-                    Spider-Man: Homecoming
+                    {title}
                   </div>
                 </div>
                 <div className="border border-[#E6E6E6] w-full mt-4"></div>
@@ -73,7 +135,7 @@ const Payment = () => {
                 <div className="flex justify-between">
                   <div className="text-[#6B6B6B] text-lg">Cinema name</div>
                   <div className="font-semibold text-lg text-right">
-                    CineOne21 Cinema
+                    {cinemaName} Cinema
                   </div>
                 </div>
                 <div className="border border-[#E6E6E6] w-full mt-4"></div>
@@ -85,7 +147,7 @@ const Payment = () => {
                     Number of tickets
                   </div>
                   <div className="font-semibold text-lg text-right">
-                    3 pieces
+                    {seatNum.length} pieces
                   </div>
                 </div>
                 <div className="border border-[#E6E6E6] w-full mt-4"></div>
@@ -94,7 +156,13 @@ const Payment = () => {
               <div className="mb-4">
                 <div className="flex justify-between">
                   <div className="text-[#6B6B6B] text-lg">Total payment</div>
-                  <div className="font-semibold text-lg text-right">$30,00</div>
+                  <div className="font-semibold text-lg text-right">{`${Intl.NumberFormat(
+                    "id-ID",
+                    {
+                      style: "currency",
+                      currency: "IDR",
+                    }
+                  ).format(total)}`}</div>
                 </div>
                 <div className="border border-[#E6E6E6] w-full mt-4"></div>
               </div>
@@ -106,16 +174,27 @@ const Payment = () => {
               Choose a Payment Method
             </h3>
             <div className="bg-white rounded-md p-16 md:p-5 lg:p-5">
-              <div className="grid grid-cols-4 gap-3 md:grid-cols-2">
-                <PaymentMethod image={logoBCA} />
-                <PaymentMethod image={logoBRI} />
-                <PaymentMethod image={logoDana} />
-                <PaymentMethod image={logoGoPay} />
-                <PaymentMethod image={logoGooglePay} />
-                <PaymentMethod image={logoPaypal} />
-                <PaymentMethod image={logoVisa} />
-                <PaymentMethod image={logoOvo} />
-              </div>
+              {isLoading ? (
+                <div className="flex w-full justify-center">
+                  <Spinner />
+                </div>
+              ) : (
+                <div className="grid grid-cols-3 gap-3 md:grid-cols-2">
+                  {dataPaymentMethod?.map((item) => (
+                    <div
+                      onClick={() => setSelectedPayment(item.id)}
+                      className={`border-2 border-[#DEDEDE] flex justify-center items-center py-2 rounded-lg cursor-pointer ${
+                        selectedPayment === item.id
+                          ? "border-green-600"
+                          : "border-[#DEDEDE]"
+                      }`}
+                      key={item.id}
+                    >
+                      <PaymentMethod data={item} />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -127,10 +206,13 @@ const Payment = () => {
               Prvious step
             </Link>
             <button
-              className="p-3 w-2/6 text-center bg-primary rounded-md text-white font-semibold md:w-full"
+              disabled={isLoadingBtn}
+              className={`btn p-3 w-2/6 text-center bg-primary rounded-md text-white font-semibold ${
+                isLoadingBtn && "loading"
+              }`}
               onClick={pay}
             >
-              Pay your order
+              {!isLoadingBtn && "Pay your order"}
             </button>
           </div>
         </div>
@@ -139,7 +221,7 @@ const Payment = () => {
           <h3 className="text-xl font-bold mt-10 mb-6">Personal Info</h3>
           <div className="bg-white rounded-md p-7 ">
             <div>
-              <FormLabel for="Full Name" />
+              <FormLabel name="Full Name" for="fullName" />
               <input
                 type="text"
                 name="fullName"
@@ -154,7 +236,7 @@ const Payment = () => {
               />
             </div>
             <div>
-              <FormLabel for="Email" />
+              <FormLabel name="Email" for="email" />
               <input
                 type="email"
                 name="email"
@@ -166,11 +248,12 @@ const Payment = () => {
                   })
                 }
                 placeholder="Jonas@gmail.com"
+                required
               />
             </div>
 
             <div>
-              <FormLabel for="Phone Number" />
+              <FormLabel name="Phone Number" for="phoneNumber" />
               <div className="flex w-full border border-[#DEDEDE] p-3 mt-2 mb-4 rounded-md">
                 <input
                   type="text"

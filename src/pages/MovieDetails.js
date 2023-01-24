@@ -9,7 +9,6 @@ import Footer from "../components/Footer";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import CardMovieDetail from "../components/CardMovieDetail";
 
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { chooseMovie } from "../redux/reducers/transactions";
 
@@ -49,29 +48,12 @@ const MovieDetails = () => {
   }, [id]);
 
   useEffect(() => {
-    const getSchedules = async () => {
-      try {
-        setIsLoadingTwoSchedules(true);
-        const { data } = await http().get(`/movieSchedules/${id}/byMovieId`, {
-          params: { date, city },
-        });
-        setSchedule(data.results);
-        setIsLoadingTwoSchedules(false);
-      } catch (err) {
-        setIsLoadingTwoSchedules(false);
-        console.log(err);
-      }
-    };
-    getSchedules();
-  }, [id, date, city]);
-
-  useEffect(() => {
     const getCityList = async () => {
       try {
         setIsLoadingTwoSchedules(true);
-        const { data } = await http().get(`/movies/${id}/schedules/city`, {
-          params: { date },
-        });
+        const { data } = await http().get(
+          `/movies/${id}/schedules/city?date=${date}`
+        );
         setCityList(data.results);
         setIsLoadingTwoSchedules(false);
         if (data.results.length) {
@@ -85,18 +67,39 @@ const MovieDetails = () => {
     getCityList();
   }, [date, id]);
 
+  useEffect(() => {
+    const getSchedules = async () => {
+      try {
+        setIsLoadingTwoSchedules(true);
+        const { data } = await http().get(
+          `/movieSchedules/${id}/byMovieId?date=${date}&city=${city}`
+        );
+        setSchedule(data.results);
+        setIsLoadingTwoSchedules(false);
+      } catch (err) {
+        setIsLoadingTwoSchedules(false);
+        console.log(err);
+      }
+    };
+    getSchedules();
+  }, [id, date, city]);
+
   const selectTime = (time, cinema) => {
     setSelectedTime(time);
     setSelectedCinema(cinema);
   };
 
-  const book = () => {
-    dispatch(
+  const doBook = async (price, cinemaName, cinemaPicture) => {
+    await dispatch(
       chooseMovie({
         movieId: id,
+        title: movieDetails.title,
         cinemaId: selectedCinema,
+        cinemaName,
+        cinemaPicture,
         bookingDate: date,
         bookingTime: selectedTime,
+        price,
       })
     );
     navigate("/order");
@@ -198,36 +201,36 @@ const MovieDetails = () => {
             <Spinner />
           </div>
         ) : (
-          schedule.map((data) => (
+          schedule.map((cinema) => (
             <div
               className="bg-white w-[350px] pb-10 rounded-lg border shadow-md lg:w-[300px]"
-              key={String(data.id)}
+              key={String(cinema.id)}
             >
               <div className="flex pt-5 px-1">
                 <div className="flex-1 flex items-center justify-center">
                   <div>
-                    <img src={data.picture} alt="" className="w-28 h-auto" />
+                    <img src={cinema.picture} alt="" className="w-28 h-auto" />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-3xl font-semibold mb-2">{data.name}</h3>
-                  <p className="text-[#6E7191]">{data.city}</p>
-                  <p className="text-[#6E7191]">{data.address}</p>
+                  <h3 className="text-3xl font-semibold mb-2">{cinema.name}</h3>
+                  <p className="text-[#6E7191]">{cinema.city}</p>
+                  <p className="text-[#6E7191]">{cinema.address}</p>
                 </div>
               </div>
               <div className="border border-b-secondary mt-6"></div>
               <div className="px-5 grid grid-cols-4 gap-2 pt-5 text-[#6E7191 md:px-5 md:grid-cols-3 lg:grid-cols-3">
-                {data.time.map((item) => (
+                {cinema.time.map((time) => (
                   <button
-                    key={item}
+                    key={time}
                     className={`${
-                      data.id === selectedCinema &&
-                      item === selectedTime &&
+                      cinema.id === selectedCinema &&
+                      time === selectedTime &&
                       "text-primary font-semibold"
                     }`}
-                    onClick={() => selectTime(item, data.id)}
+                    onClick={() => selectTime(time, cinema.id)}
                   >
-                    {new Date(`2023-01-01 ${item}`).toLocaleString("en-US", {
+                    {new Date(`2023-01-01 ${time}`).toLocaleString("en-US", {
                       hour: "numeric",
                       minute: "numeric",
                       hour12: true,
@@ -245,13 +248,15 @@ const MovieDetails = () => {
                     style: "currency",
                     currency: "IDR",
                   }
-                ).format(data.price)}/seat`}</h3>
+                ).format(cinema.price)}/seat`}</h3>
               </div>
               <div className="px-5 md:px-5 ">
                 <button
-                  className="w-full bg-primary py-2 shadow-primary rounded-md text-white"
-                  disabled={selectedCinema !== data.id}
-                  onClick={book}
+                  className="btn w-full hover:bg-green-700 bg-primary py-2 shadow-primary rounded-md text-white"
+                  disabled={selectedCinema !== cinema.id || !selectedTime}
+                  onClick={() =>
+                    doBook(cinema.price, cinema.name, cinema.picture)
+                  }
                 >
                   Book now
                 </button>

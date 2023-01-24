@@ -1,34 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import http from "../../helpers/http";
 
-export const createTransaction = createAsyncThunk(
-  "transactions",
-  async ({ data, form, token, cb }) => {
-    const { bookingDate, bookingTime, cinemaId, movieId, seatNum } = data;
-    const { fullName, email, phoneNumber, paymentMethodId } = form;
-
+export const transactionAction = createAsyncThunk(
+  "transaction/createTransaction",
+  async ({ dataTrx, cb }, { getState }) => {
+    const { token } = getState().auth;
     try {
-      const { data } = await axios.post(
-        "https://fw12-backend-roan.vercel.app/transactions/createOrder",
-        {
-          bookingDate,
-          movieId,
-          cinemaId,
-          bookingTime,
-          email,
-          fullName,
-          paymentMethodId,
-          phoneNumber,
-          seatNum,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const { data } = await http(token).post(
+        "/transactions/createOrder",
+        dataTrx
       );
       cb();
-      return data.data;
+      return data.results;
     } catch (err) {
       throw err.response.data.message;
     }

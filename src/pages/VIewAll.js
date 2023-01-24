@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 
 import { ChevronDown, Search } from "react-feather";
 import CardMovie from "../components/CardMovie";
-import Pagination from "../components/now-showing/Pagination";
 
 import http from "../helpers/http";
 import SkeletonUpcoming from "../components/SkeletonUpcoming";
@@ -21,6 +20,16 @@ const VIewAll = () => {
     e.preventDefault();
     const value = e.target.search.value;
     setSearch(value);
+  };
+
+  const prev = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const next = () => {
+    setPage(page + 1);
   };
 
   useEffect(() => {
@@ -119,6 +128,8 @@ const VIewAll = () => {
               <SkeletonUpcoming />
               <SkeletonUpcoming />
             </>
+          ) : dataAllMovies.length === 0 ? (
+            <div className="text-xl font-semibold">Movie not found!</div>
           ) : (
             dataAllMovies?.map((item) => (
               <div
@@ -130,7 +141,23 @@ const VIewAll = () => {
             ))
           )}
         </div>
-        <Pagination />
+        <div className="px-24 mt-10 flex justify-center gap-2">
+          <div
+            disabled={page <= 1}
+            className="btn bg-primary hover:bg-primary"
+            onClick={() => prev()}
+          >
+            Prev
+          </div>
+          <div
+            disabled={dataAllMovies.length === 0}
+            className="btn bg-primary hover:bg-primary"
+            onClick={() => next()}
+          >
+            Next
+          </div>
+        </div>
+        {/* <Pagination /> */}
       </div>
       <Footer />
     </Fragment>
