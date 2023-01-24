@@ -181,7 +181,7 @@ const OrderHistory = () => {
             </div>
           </div>
         </div>
-        <div className="w-3/4 md:w-ful lg:w-2/3">
+        <div className="w-3/4 md:w-full lg:w-2/3">
           <div className="mt-10 mb-9">
             <div className="bg-white p-7 items-center rounded-md md:flex md:flex-col md:gap-3">
               <Link to="/profile" className="font-semibold mr-10 md:mr-0">

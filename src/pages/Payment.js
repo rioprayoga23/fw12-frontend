@@ -207,7 +207,7 @@ const Payment = () => {
             </Link>
             <button
               disabled={isLoadingBtn}
-              className={`btn p-3 w-2/6 text-center bg-primary btn-success rounded-md text-white font-semibold ${
+              className={`btn p-3 w-2/6 text-center bg-primary btn-success rounded-md text-white font-semibold md:w-full ${
                 isLoadingBtn && "loading"
               }`}
               onClick={pay}
