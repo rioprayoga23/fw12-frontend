@@ -101,7 +101,7 @@ const Navbar = () => {
       )}
 
       {/* DROPDOWN MOBILE */}
-      <div className="dropdown dropdown-end md:block lg:hidden xl:hidden xxl:hidden xxxl:hidden">
+      <div className="dropdown dropdown-end md:block lg:hidden xl:hidden xxl:hidden xxxl:hidden xxll:hidden">
         <div tabIndex={0} className="py-2 px-3 rounded-md bg-primary m-1">
           {<Menu color="white" />}
         </div>
