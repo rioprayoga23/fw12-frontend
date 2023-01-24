@@ -4,10 +4,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 import { ChevronDown, Search } from "react-feather";
-import CardMovie from "../components/CardMovie";
 
 import http from "../helpers/http";
-import SkeletonUpcoming from "../components/SkeletonUpcoming";
+import CardViewAll from "../components/CardViewAll";
+import SkeletonViewAll from "../components/SkeletonViewAll";
 
 const VIewAll = () => {
   const [dataAllMovies, setDataAllMovies] = useState([]);
@@ -81,8 +81,8 @@ const VIewAll = () => {
                 </li>
               </ul>
             </div>
-            <form onSubmit={doSearch}>
-              <div className="flex gap-1 md:w-full cursor-pointer">
+            <div className="flex gap-1 md:w-full cursor-pointer">
+              <form onSubmit={doSearch} className="w-full flex gap-2">
                 <input
                   disabled={isLoading}
                   type="text"
@@ -93,12 +93,12 @@ const VIewAll = () => {
                 <button
                   disabled={isLoading}
                   onSubmit={doSearch}
-                  className={`btn border-2 bg-primary hover:bg-success p-2 border-primary hover:border-primary rounded-xl md:w-full`}
+                  className={`btn border-2 bg-primary hover:bg-success p-2 border-primary hover:border-primary rounded-xl md:w-['20%']`}
                 >
                   <Search />
                 </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
         {/* <div className="flex ml-24 overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
@@ -118,25 +118,25 @@ const VIewAll = () => {
 
         <div className="mx-24 mt-10 gap-5 py-10 flex flex-wrap bg-white justify-center md:mx-0 md:justify-center md:gap-3 lg:mx-10">
           {isLoading ? (
-            <>
-              <SkeletonUpcoming />
-              <SkeletonUpcoming />
-              <SkeletonUpcoming />
-              <SkeletonUpcoming />
-              <SkeletonUpcoming />
-              <SkeletonUpcoming />
-              <SkeletonUpcoming />
-              <SkeletonUpcoming />
-            </>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <SkeletonViewAll />
+              <SkeletonViewAll />
+              <SkeletonViewAll />
+              <SkeletonViewAll />
+              <SkeletonViewAll />
+              <SkeletonViewAll />
+              <SkeletonViewAll />
+              <SkeletonViewAll />
+            </div>
           ) : dataAllMovies.length === 0 ? (
             <div className="text-xl font-semibold">Movie not found!</div>
           ) : (
             dataAllMovies?.map((item) => (
               <div
-                className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:p-2 md:ml-5 flex flex-col items-center justify-center lg:w-48 md:m-2"
+                className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:p-2 flex flex-col items-center justify-center lg:w-48 md:w-32"
                 key={item.id}
               >
-                <CardMovie data={item} />
+                <CardViewAll data={item} />
               </div>
             ))
           )}

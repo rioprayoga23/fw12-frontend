@@ -2,8 +2,6 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import ebvId from "../assets/img/ebu.png";
-
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link, useNavigate, useParams } from "react-router-dom";

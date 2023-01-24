@@ -47,11 +47,11 @@ const TicketResultExpired = (props) => {
             <div className="w-full relative overflow-hidden ">
               <div className="bg-primary pl-20 py-3 flex items-center rounded-t-2xl md:hidden lg:pl-10">
                 <div className="flex-1">
-                  <img src={brandSmall} alt="" />
+                  <img src={brandSmall} alt="brand" className="w-32" />
                 </div>
                 <div className="text-lg text-white mr-10">Admit One</div>
                 <div className="flex-1 flex justify-end mr-16">
-                  <img src={brandSmall} alt="" />
+                  <img src={brandSmall} alt="brand" className="w-32" />
                 </div>
                 <div className="flex flex-col h-full items-center absolute top-0 right-64">
                   <div className="w-[1px] border border-dashed h-full absolute top-0"></div>

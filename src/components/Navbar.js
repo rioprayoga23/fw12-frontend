@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, Menu } from "react-feather";
+import { Menu } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
 
 import { logout as logoutAction } from "../redux/reducers/auth";
@@ -42,7 +42,7 @@ const Navbar = () => {
   return (
     <nav className="flex items-center py-5 px-24 font-Mulish font-semibold md:px-5 lg:px-10">
       <div className="md:flex-1">
-        <img src={brandNav} alt="" className="" />
+        <img src={brandNav} alt="brand" className="w-36" />
       </div>
       <li className="list-none flex-1 ml-20 md:hidden lg:ml-10">
         <Link to="/" className="px-7 md:px-0">
@@ -60,13 +60,13 @@ const Navbar = () => {
             {picture ? (
               <div className="avatar cursor-pointer">
                 <div className="w-14 rounded-full">
-                  <img src={picture} tabIndex={0} />
+                  <img src={picture} tabIndex={0} alt="img" />
                 </div>
               </div>
             ) : (
               <div className="avatar cursor-pointer">
                 <div className="w-14 rounded-full">
-                  <img src={profileImg} tabIndex={0} />
+                  <img src={profileImg} tabIndex={0} alt="img" />
                 </div>
               </div>
             )}
