@@ -53,7 +53,7 @@ const VIewAll = () => {
       <Navbar />
 
       <div className="bg-secondary pb-10">
-        <div className="flex items-center px-24 pt-10 pb-7 md:px-5 lg:px-10 md:flex-col md:items-start">
+        <div className="flex items-center px-24 pt-10 pb-7 md:px-5 lg:px-10 md:flex-col md:items-start xxxl:px-[510px]">
           <div className="flex-1 font-Mulish font-bold text-xl md:mb-3">
             <h3>List Movie</h3>
           </div>
@@ -116,7 +116,7 @@ const VIewAll = () => {
           <BtnMonth month={"August"} />
         </div> */}
 
-        <div className="mx-24 mt-10 gap-5 py-10 flex flex-wrap bg-white justify-center md:mx-0 md:justify-center md:gap-3 lg:mx-10">
+        <div className="mx-24 mt-10 gap-5 py-10 flex flex-wrap bg-white justify-center md:mx-0 md:justify-center md:gap-3 lg:mx-10 xxxl:mx-[510px]">
           {isLoading ? (
             <div className="flex flex-wrap gap-3 justify-center">
               <SkeletonViewAll />
@@ -133,7 +133,7 @@ const VIewAll = () => {
           ) : (
             dataAllMovies?.map((item) => (
               <div
-                className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:p-2 flex flex-col items-center justify-center lg:w-48 md:w-32"
+                className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-secondary rounded-lg md:mr-0 md:p-2 flex flex-col items-center justify-center lg:w-48 md:w-32 "
                 key={item.id}
               >
                 <CardViewAll data={item} />
@@ -141,7 +141,7 @@ const VIewAll = () => {
             ))
           )}
         </div>
-        <div className="px-24 mt-10 flex justify-center gap-2">
+        <div className="px-24 mt-10 flex justify-center gap-2 xxxl:px-[510px]">
           <div
             disabled={page <= 1}
             className="btn bg-primary hover:bg-primary"

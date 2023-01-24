@@ -10,8 +10,8 @@ const TicketResultUsed = () => {
     <Fragment>
       <Navbar />
 
-      <div className="bg-secondary py-20 px-64 font-Mulish md:px-5 lg:px-5 xl:px-10">
-        <div className="bg-white flex flex-col items-center p-10 md:p-5">
+      <div className="bg-secondary py-20 px-64 font-Mulish md:px-5 lg:px-5 xl:px-10 xxxl:px-[510px]">
+        <div className="bg-white flex flex-col items-center p-10 md:p-5 xxxl:px-32">
           <h3 className="text-lg font-semibold mb-10 md:mb-0">
             Proof of Payment
           </h3>

@@ -49,7 +49,7 @@ const OrderPage = () => {
   return (
     <Fragment>
       <Navbar />
-      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col-reverse lg:px-10">
+      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col-reverse lg:px-10 xxxl:px-[510px]">
         <div className="w-2/3 md:w-full">
           <div className="md:w-full">
             <h3 className="text-xl font-bold mt-10 mb-6">Movie Selected</h3>

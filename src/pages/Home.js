@@ -49,7 +49,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <header className="flex items-center px-24 mt-10 pb-20 md:px-5 md:flex-col md:items-start lg:px-10">
+      <header className="flex items-center px-24 mt-10 pb-20 md:px-5 md:flex-col md:items-start lg:px-10 xxxl:px-[510px]">
         <section className="font-Mulish flex-1">
           <p className="text-xl text-[#A0A3BD] mb-5 md:text-md md:mb-1 md:text-base">
             Nearest Cinema, Newest Movie,
@@ -67,7 +67,7 @@ const Home = () => {
 
       <main>
         <section className="py-10 bg-secondary h-wrapNowShowing">
-          <div className="px-24 flex justify-between md:px-5 md:items-center lg:px-10">
+          <div className="px-24 flex justify-between md:px-5 md:items-center lg:px-10 xxxl:px-[510px]">
             <div className="border-b-2 pb-3 border-primary text-lg">
               <p className="text-primary font-bold font-Mulish">Now Showing</p>
             </div>
@@ -76,7 +76,7 @@ const Home = () => {
             </div>
           </div>
           {isLoadingNow ? (
-            <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
+            <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10 xxxl:ml-[510px]">
               <SkeletonNowShowing />
               <SkeletonNowShowing />
               <SkeletonNowShowing />
@@ -85,7 +85,7 @@ const Home = () => {
               <SkeletonNowShowing />
             </div>
           ) : (
-            <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10">
+            <div className="ml-24 mt-10 flex overflow-x-auto no-scrollbar md:ml-5 lg:ml-10 xxxl:ml-[490px]">
               {nowShowing?.map((movie) => (
                 <div
                   className="group flex-shrink-0 h-fit p-6 mr-5 border-2 border-white rounded-lg hover:bg-white hover:border-primary cursor-pointer"
@@ -98,7 +98,7 @@ const Home = () => {
           )}
         </section>
         <section className="py-32 bg-white md:py-24">
-          <div className="px-24 flex justify-between md:px-5 lg:px-10">
+          <div className="px-24 flex justify-between md:px-5 lg:px-10 xxxl:px-[510px]">
             <div className="pb-3 border-primary text-lg">
               <p className="font-bold font-Mulish">Upcoming Movies</p>
             </div>
@@ -106,7 +106,7 @@ const Home = () => {
               <Link to="/viewAll">View All</Link>
             </div>
           </div>
-          <div className="ml-24 flex mt-5 overflow-x-scroll no-scrollbar md:ml-5 lg:ml-10">
+          <div className="ml-24 flex mt-5 overflow-x-scroll no-scrollbar md:ml-5 lg:ml-10 xxxl:ml-[490px]">
             <div onClick={() => setSelectedMonth("January")}>
               <BtnMonth
                 month={"January"}
@@ -175,7 +175,7 @@ const Home = () => {
             </div>
           </div>
           {isLoadingUp ? (
-            <div className="ml-24 mt-10 flex overflow-x-scroll no-scrollbar md:ml-5 lg:ml-10">
+            <div className="ml-24 mt-10 flex overflow-x-scroll no-scrollbar md:ml-5 lg:ml-10 xxxl:ml-[490px]">
               <SkeletonUpcoming />
               <SkeletonUpcoming />
               <SkeletonUpcoming />
@@ -184,7 +184,7 @@ const Home = () => {
               <SkeletonUpcoming />
             </div>
           ) : (
-            <div className="ml-24 mt-10 flex overflow-x-scroll no-scrollbar md:ml-0 lg:ml-10">
+            <div className="ml-24 mt-10 flex overflow-x-scroll no-scrollbar md:ml-0 lg:ml-10 xxxl:ml-[490px]">
               {upComing.length < 1 ? (
                 <div className="justify-center text-center w-full mr-24 md:mr-0 lg:mr-0 text-xl md:ml-0">
                   Oopss, movie not found
@@ -202,7 +202,7 @@ const Home = () => {
             </div>
           )}
         </section>
-        <section className="px-24 font-Mulish pb-20 md:px-5 lg:px-10">
+        <section className="px-24 font-Mulish pb-20 md:px-5 lg:px-10 xxxl:px-[510px]">
           <div className="w-full shadow-xl text-center py-12 rounded-md md:p-5 md:flex md:flex-col md:items-center">
             <div className="">
               <p className="text-[#4E4B66] text-2xl md:text-base">

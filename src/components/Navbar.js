@@ -40,7 +40,7 @@ const Navbar = () => {
   }, [dispatch, token]);
 
   return (
-    <nav className="flex items-center py-5 px-24 font-Mulish font-semibold md:px-5 lg:px-10">
+    <nav className="flex items-center py-5 px-24 font-Mulish font-semibold md:px-5 lg:px-10 xxxl:px-[510px]">
       <div className="md:flex-1">
         <img src={brandNav} alt="brand" className="w-36" />
       </div>
@@ -101,7 +101,7 @@ const Navbar = () => {
       )}
 
       {/* DROPDOWN MOBILE */}
-      <div className="dropdown dropdown-end md:block lg:hidden xl:hidden xxl:hidden">
+      <div className="dropdown dropdown-end md:block lg:hidden xl:hidden xxl:hidden xxxl:hidden">
         <div tabIndex={0} className="py-2 px-3 rounded-md bg-primary m-1">
           {<Menu color="white" />}
         </div>

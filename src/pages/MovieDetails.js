@@ -106,7 +106,7 @@ const MovieDetails = () => {
   return (
     <Fragment>
       <Navbar />
-      <div className="px-24 flex mt-10 gap-10 pb-14 font-Mulish md:px-5 md:flex-col lg:px-10">
+      <div className="px-24 flex mt-10 gap-10 pb-14 font-Mulish md:px-5 md:flex-col lg:px-10 xxxl:px-[510px]">
         {isLoading ? (
           <div className="w-full flex py-20 justify-center">
             <Spinner />
@@ -172,7 +172,7 @@ const MovieDetails = () => {
           </>
         )}
       </div>
-      <div className="bg-secondary px-24 flex flex-col items-center pb-10 font-Mulish md:items-start md:px-5">
+      <div className="bg-secondary px-24 flex flex-col items-center pb-10 font-Mulish md:items-start md:px-5 xxxl:px-[510px]">
         <div className="pt-10 pb-5 text-xl font-semibold">
           Showtimes and Tickets
         </div>
@@ -193,7 +193,7 @@ const MovieDetails = () => {
           </select>
         </div>
       </div>
-      <div className="flex flex-wrap bg-secondary px-24 pb-10 gap-5 justify-center md:px-5 lg:px-10">
+      <div className="flex flex-wrap bg-secondary px-24 pb-10 gap-5 justify-center md:px-5 lg:px-10 xxxl:px-[510px]">
         {isLoadingSchedules ? (
           <div className="w-full flex py-20 justify-center">
             <Spinner />
@@ -263,7 +263,7 @@ const MovieDetails = () => {
           ))
         )}
       </div>
-      <div className="flex bg-secondary justify-center items-center px-24 gap-1 pb-20 md:px-5">
+      <div className="flex bg-secondary justify-center items-center px-24 gap-1 pb-20 md:px-5 xxxl:px-[510px]">
         <div className="h-[2px] bg-[#DEDEDE] w-full"></div>
         <Link to="">
           <div className="w-48 text-center text-primary font-semibold md:w-28">

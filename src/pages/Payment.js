@@ -98,7 +98,7 @@ const Payment = () => {
   return (
     <Fragment>
       <Navbar />
-      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 lg:px-10 md:flex-col-reverse">
+      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 lg:px-10 md:flex-col-reverse xxxl:px-[510px]">
         <div className="w-2/3 md:w-full">
           <div>
             <h3 className="text-xl font-bold mt-10 mb-6">Movie Selected</h3>

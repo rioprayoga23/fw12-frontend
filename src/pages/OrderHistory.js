@@ -122,7 +122,7 @@ const OrderHistory = () => {
     <Fragment>
       <Navbar />
 
-      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col lg:px-10">
+      <div className="bg-secondary px-24 pb-24 flex gap-5 font-Mulish md:px-5 md:flex-col lg:px-10 xxxl:px-[510px]">
         <div className="w-1/4 md:w-full lg:w-1/3">
           <div className="bg-white rounded-md mt-10">
             <div className="p-8">

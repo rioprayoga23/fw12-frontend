@@ -70,7 +70,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col w-2/4 max-h-screen overflow-y-scroll lg:w-full">
+      <div className="flex flex-col w-2/4 max-h-screen overflow-y-scroll lg:w-full xxxl:justify-center">
         <div className="w-full px-14 pb-20 md:px-7 lg:px-32">
           <div className="font-Inter">
             <h1 className="text-5xl font-semibold mb-4 pt-24 md:pt-16 lg:pt-24">

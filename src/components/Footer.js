@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="py-12 font-Mulish">
-      <div className="px-24 flex justify-between md:flex-col md:px-5 lg:px-10 lg:gap-3">
+      <div className="px-24 flex justify-between md:flex-col md:px-5 lg:px-10 lg:gap-3 xxxl:px-[510px]">
         <div className="text-[#6E7191]">
           <img src={BrandNav} alt="brand" className="w-36" />
           <p className="pt-5">Stop waiting in line. Buy tickets</p>
