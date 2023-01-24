@@ -24,8 +24,6 @@ const Home = () => {
   const [isLoadingNow, setIsLoadingNow] = useState(false);
   const [isLoadingUp, setIsLoadingUp] = useState(false);
 
-  const token = useSelector((state) => state.auth.token);
-
   const getNowShowing = async () => {
     setIsLoadingNow(true);
     const { data } = await http().get("/movies/now?limit=8");

@@ -4,7 +4,6 @@ import React, { Fragment } from "react";
 import Navbar from "../components/Navbar";
 import brandSmall from "../assets/img/brand-white.png";
 import Footer from "../components/Footer";
-import { useSelector } from "react-redux";
 
 const TicketResultUsed = () => {
   return (

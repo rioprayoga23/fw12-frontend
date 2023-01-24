@@ -4,7 +4,7 @@ import profileImg from "../assets/img/Ellipse 11.png";
 import { Link } from "react-router-dom";
 import { Search, Menu } from "react-feather";
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <nav className="flex items-center py-5 px-24 font-Mulish font-semibold md:px-5 lg:px-10">
       <div className="md:flex-1 lg:flex-1">

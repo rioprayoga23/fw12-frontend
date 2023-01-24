@@ -13,13 +13,13 @@ const authReducer = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout: (state, action) => {
+    logout: () => {
       return initialState;
     },
   },
   extraReducers: (build) => {
     //* Login
-    build.addCase(loginAction.pending, (state, action) => {
+    build.addCase(loginAction.pending, (state) => {
       state.isLoading = true;
     });
     build.addCase(loginAction.rejected, (state, { error }) => {
@@ -33,7 +33,7 @@ const authReducer = createSlice({
     });
 
     //* SignUp
-    build.addCase(registerAction.pending, (state, action) => {
+    build.addCase(registerAction.pending, (state) => {
       state.isLoading = true;
     });
     build.addCase(registerAction.rejected, (state, { error }) => {

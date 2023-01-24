@@ -13,7 +13,7 @@ const profile = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    clearProfile: (state, action) => {
+    clearProfile: () => {
       return initialState;
     },
   },

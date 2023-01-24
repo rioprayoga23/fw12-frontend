@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import http from "../helpers/http";
 import Spinner from "../components/Spinner";
 
-const TicketResultExpired = (props) => {
+const TicketResultExpired = () => {
   const token = useSelector((state) => state.auth.token);
 
   const [isLoading, setIsLoading] = useState(false);

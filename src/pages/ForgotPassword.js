@@ -102,7 +102,7 @@ const ForgotPassword = () => {
               Fill your complete email
             </h1>
             <p className="text-[#AAAAAA] text-md mb-9">
-              we'll send a link to your email shortly
+              we will send a link to your email shortly
             </p>
             {message && (
               <div className="p-4 bg-green-200 border-2 border-green-300 rounded-xl mb-5 text-center">

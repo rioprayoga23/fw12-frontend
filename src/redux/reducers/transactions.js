@@ -40,13 +40,13 @@ const transactionsReducer = createSlice({
     },
   },
   extraReducers: (build) => {
-    build.addCase(transactionAction.pending, (state, { payload }) => {
+    build.addCase(transactionAction.pending, (state) => {
       state.isLoadingBtn = true;
     });
-    build.addCase(transactionAction.rejected, (state, { payload }) => {
+    build.addCase(transactionAction.rejected, (state) => {
       state.isLoadingBtn = false;
     });
-    build.addCase(transactionAction.fulfilled, (state, { payload }) => {
+    build.addCase(transactionAction.fulfilled, (state) => {
       state.isLoadingBtn = false;
     });
   },

@@ -156,7 +156,7 @@ const SignIn = () => {
               </span>
             </p>
             <p>
-              Don't have an account?
+              Dont have an account?
               <span>
                 <Link to="/signUp" className="text-primary underline">
                   Sign Up

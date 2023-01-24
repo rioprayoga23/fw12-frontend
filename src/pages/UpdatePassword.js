@@ -153,7 +153,7 @@ const UpdatePassword = () => {
               Fill your complete email
             </h1>
             <p className="text-[#AAAAAA] text-md mb-9">
-              we'll send a link to your email shortly
+              we will send a link to your email shortly
             </p>
             {message && (
               <div
