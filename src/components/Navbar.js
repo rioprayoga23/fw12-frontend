@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center py-5 px-24 font-Mulish font-semibold md:px-5 lg:px-10 xxxl:px-[510px]">
-      <div className="md:flex-1">
+      <div className="md:flex-1 cursor-pointer" onClick={() => navigate("/")}>
         <img src={brandNav} alt="brand" className="w-36" />
       </div>
       <li className="list-none flex-1 ml-20 md:hidden lg:ml-10">
