@@ -10,7 +10,6 @@ import { default as CardMovieNowShowing } from "../components/now-showing/CardMo
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-import { useSelector } from "react-redux";
 import http from "../helpers/http";
 
 import SkeletonNowShowing from "../components/SkeletonNowShowing";
