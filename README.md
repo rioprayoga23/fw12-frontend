@@ -19,6 +19,11 @@ TiketKu is a web application for ordering movie tickets. With tiketku, users can
 
 1. Clone This Project
 
+# &lt;clipboard-copy&gt; element
+
+https://github.com/rioprayoga23/fw12-frontend.git
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
