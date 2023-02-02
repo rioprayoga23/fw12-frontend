@@ -1,8 +1,9 @@
-#TiketKu
+# TiketKu
 ![results](https://user-images.githubusercontent.com/105056679/216241914-4f367f01-5c82-49ca-9636-d0c8382026ac.png)
 
-# Link Deploy
-https://fw12-frontend-two.vercel.app/
+# About Project
+
+TiketKu is a web application for ordering movie tickets. With tiketku, users can order tickets for the desired movie. This application also provides an admin dashboard feature to manage film-related data. This is an individual project and uses React
 
 # Getting Started with Create React App
 
