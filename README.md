@@ -23,3 +23,7 @@ https://github.com/rioprayoga23/fw12-frontend.git
 ```
 2. npm install
 3. npm run start
+
+# Live Demo Project
+
+https://fw12-frontend-two.vercel.app/
