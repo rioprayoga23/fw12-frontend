@@ -5,13 +5,19 @@
 
 TiketKu is a web application for ordering movie tickets. With tiketku, users can order tickets for the desired movie. This application also provides an admin dashboard feature to manage film-related data. This is an individual project and uses React
 
-# Getting Started with Create React App
+# Build With Technologies : 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML?retiredLocale=id).
+2. [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS).
+3. [Taildwind](https://tailwindcss.com/).
+4. [DaisyUi](https://daisyui.com/).
+5. [React](https://reactjs.org/).
+6. [Redux](https://redux-toolkit.js.org/).
+7. [Formik](https://formik.org/).
 
-## Available Scripts
+# Installation
 
-In the project directory, you can run:
+1. Clone This Project
 
 ### `npm start`
 
