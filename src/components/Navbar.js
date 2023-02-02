@@ -165,11 +165,18 @@ const Navbar = () => {
                 </div>
               </div>
             ) : (
-              <Link to={"/signUp"} className="md:px-0">
-                <div className="bg-primary py-2 px-7 rounded-md text-white cursor-pointer text-sm md:w-full md:text-center">
-                  Sign Up
-                </div>
-              </Link>
+              <>
+                <Link to={"/signIn"} className="md:px-0">
+                  <div className="bg-primary py-2 px-7 rounded-md text-white cursor-pointer text-sm md:w-full md:text-center">
+                    Sign In
+                  </div>
+                </Link>
+                <Link to={"/signUp"} className="md:px-0">
+                  <div className="bg-primary py-2 px-7 rounded-md text-white cursor-pointer text-sm md:w-full md:text-center">
+                    Sign Up
+                  </div>
+                </Link>
+              </>
             )}
           </li>
         </ul>
